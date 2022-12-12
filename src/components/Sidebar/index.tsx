@@ -50,22 +50,27 @@ const PAGE_LINKS = [
     },
 ]
 
+const ICON_SIZE_24 = {
+    width: '6rem',
+    height: '6rem',
+}
+
 export const Sidebar: React.FC<ComponentProps<typeof styles['Wrapper']>> = (
     props
 ) => {
     return (
         <styles.Wrapper gap={12} {...props}>
-            <Logo style={{ height: '9rem', width: '36rem' }} />
+            <Logo style={{ height: '7rem', width: '28rem' }} />
             <Vexile gap={6}>
                 <Vexile gap={2}>
                     <Hexile gap={1.5} y="center">
-                        <Person />
+                        <Person style={ICON_SIZE_24} />
                         <Text1>
                             <b>김선달</b> 사장님
                         </Text1>
                     </Hexile>
                     <Hexile gap={1.5} y="center">
-                        <Storefront />
+                        <Storefront style={ICON_SIZE_24} />
                         <Text1>봉이프레시</Text1>
                     </Hexile>
                 </Vexile>
