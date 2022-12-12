@@ -3,6 +3,8 @@ import { Button, Header1, Text1 } from 'incart-fe-common'
 import { ReactComponent as Logo } from 'incart-fe-common/src/brand/TextLogo.svg'
 import { ReactComponent as Person } from 'incart-fe-common/src/icons/Person.svg'
 import { ReactComponent as Storefront } from 'incart-fe-common/src/icons/Storefront.svg'
+import { ComponentProps } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import styles from './styles'
 
@@ -13,15 +15,15 @@ const PAGE_LINKS = [
         items: [
             {
                 name: '상품 목록',
-                link: 'product',
+                link: '/product',
             },
             {
                 name: '주문 내역',
-                link: 'order',
+                link: '/order',
             },
             {
                 name: '여러번 주문한 손님',
-                link: 'regular-customer',
+                link: '/regular-customer',
             },
         ],
     },
@@ -30,27 +32,29 @@ const PAGE_LINKS = [
         items: [
             {
                 name: '통계',
-                link: 'chart',
+                link: '/chart',
             },
             {
                 name: '상점 공지',
-                link: 'store-notice',
+                link: '/store-notice',
             },
             {
                 name: '결제 수단',
-                link: 'payment-method',
+                link: '/payment-method',
             },
             {
                 name: '테마',
-                link: 'appearance',
+                link: '/appearance',
             },
         ],
     },
 ]
 
-export const Sidebar = () => {
+export const Sidebar: React.FC<ComponentProps<typeof styles['Wrapper']>> = (
+    props
+) => {
     return (
-        <styles.Wrapper gap={12}>
+        <styles.Wrapper gap={12} {...props}>
             <Logo style={{ height: '9rem', width: '36rem' }} />
             <Vexile gap={6}>
                 <Vexile gap={2}>
@@ -73,9 +77,20 @@ export const Sidebar = () => {
                         <Header1 grey5>{group.groupName}</Header1>
                     </Hexile>
                     {group.items.map((item) => (
-                        <styles.NavSection key={item.link}>
-                            <Text1>{item.name}</Text1>
-                        </styles.NavSection>
+                        <NavLink
+                            key={item.link}
+                            to={item.link}
+                            style={{
+                                color: 'unset',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            {({ isActive }) => (
+                                <styles.NavSection selected={isActive}>
+                                    <Text1>{item.name}</Text1>
+                                </styles.NavSection>
+                            )}
+                        </NavLink>
                     ))}
                 </Vexile>
             ))}

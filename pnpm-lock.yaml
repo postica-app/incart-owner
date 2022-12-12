@@ -12,6 +12,7 @@ specifiers:
   namisa: file:..\namisa
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-router-dom: ^6.4.5
   typescript: ^4.9.3
   vite: ^4.0.0
 
@@ -20,10 +21,11 @@ dependencies:
   '@mdx-js/rollup': 2.1.5
   '@stitches/react': 1.2.8_react@18.2.0
   '@svgr/rollup': 6.5.1
-  incart-fe-common: github.com/ryconics/incart-fe-common/ff39c3ae23a3cae3a86e69eef25cabe811c41fac_rolo3tbsr4j7wmg4qr2yc3sdmu
+  incart-fe-common: github.com/ryconics/incart-fe-common/0e1f14cfc7b1ec216810b316f47f97498ffff90d_rolo3tbsr4j7wmg4qr2yc3sdmu
   namisa: file:../namisa_2anlgt5m5qu4smwwbiij54dvra
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-router-dom: 6.4.5_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
   '@types/react': 18.0.26
@@ -1573,6 +1575,11 @@ packages:
       - supports-color
     dev: false
 
+  /@remix-run/router/1.0.5:
+    resolution: {integrity: sha512-my0Mycd+jruq/1lQuO5LBB6WTlL/e8DTCYWp44DfMTDcXz8DcTlgF0ISaLsGewt+ctHN+yA8xMq3q/N7uWJPug==}
+    engines: {node: '>=14'}
+    dev: false
+
   /@rollup/pluginutils/4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
     engines: {node: '>= 8.0.0'}
@@ -2876,6 +2883,29 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /react-router-dom/6.4.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-a7HsgikBR0wNfroBHcZUCd9+mLRqZS8R5U1Z1mzLWxFXEkUT3vR1XXmSIVoVpxVX8Bar0nQYYYc9Yipq8dWwAA==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.0.5
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 6.4.5_react@18.2.0
+    dev: false
+
+  /react-router/6.4.5_react@18.2.0:
+    resolution: {integrity: sha512-1RQJ8bM70YEumHIlNUYc6mFfUDoWa5EgPDenK/fq0bxD8DYpQUi/S6Zoft+9DBrh2xmtg92N5HMAJgGWDhKJ5Q==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.0.5
+      react: 18.2.0
+    dev: false
+
   /react/18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -3275,9 +3305,9 @@ packages:
       typescript: 4.9.4
     dev: false
 
-  github.com/ryconics/incart-fe-common/ff39c3ae23a3cae3a86e69eef25cabe811c41fac_rolo3tbsr4j7wmg4qr2yc3sdmu:
-    resolution: {tarball: https://codeload.github.com/ryconics/incart-fe-common/tar.gz/ff39c3ae23a3cae3a86e69eef25cabe811c41fac}
-    id: github.com/ryconics/incart-fe-common/ff39c3ae23a3cae3a86e69eef25cabe811c41fac
+  github.com/ryconics/incart-fe-common/0e1f14cfc7b1ec216810b316f47f97498ffff90d_rolo3tbsr4j7wmg4qr2yc3sdmu:
+    resolution: {tarball: https://codeload.github.com/ryconics/incart-fe-common/tar.gz/0e1f14cfc7b1ec216810b316f47f97498ffff90d}
+    id: github.com/ryconics/incart-fe-common/0e1f14cfc7b1ec216810b316f47f97498ffff90d
     name: incart-fe-common
     version: 0.0.0
     peerDependencies:

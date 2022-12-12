@@ -16,7 +16,8 @@
     "incart-fe-common": "github:ryconics/incart-fe-common",
     "namisa": "file:..\\namisa",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

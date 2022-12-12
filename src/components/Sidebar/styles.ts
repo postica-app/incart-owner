@@ -8,6 +8,9 @@ export default {
     NavSection: styled('div', {
         padding: '3rem',
         borderRadius: '3rem',
+        '&>p': {
+            color: '$grey5',
+        },
         variants: {
             selected: {
                 true: {
