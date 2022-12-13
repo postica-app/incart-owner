@@ -14,4 +14,14 @@ export default {
 
         return result.data
     },
+    async getProductById(id: string): Promise<Doc<ProductType>> {
+        const result = await supabase
+            .from('product')
+            .select('*')
+            .filter('id', 'eq', id)
+
+        if (result.error) throw result.error
+
+        return result.data[0]
+    },
 }

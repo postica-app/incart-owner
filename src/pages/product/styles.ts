@@ -1,7 +1,7 @@
 import { Vexile } from '@haechi/flexile'
 import { styled } from 'incart-fe-common'
 
-export const EmptyListStyles = {
+export const ListItem = {
     wrapper: styled(Vexile, {
         elevated: true,
         lightBorder: {
@@ -9,5 +9,12 @@ export const EmptyListStyles = {
             withShadow: true,
         },
         borderRadius: '3rem',
+    }),
+}
+
+export default {
+    ProductGrid: styled('div', {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
     }),
 }

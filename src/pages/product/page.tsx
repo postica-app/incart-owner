@@ -6,6 +6,8 @@ import { Hexile } from '@haechi/flexile'
 
 import { Breadcrumb, Plink } from '@/components'
 import Parts from './parts'
+import actions from './actions'
+import Styles from './styles'
 
 export const info = {
     group: '판매',
@@ -13,7 +15,8 @@ export const info = {
 }
 
 export const dataLoader = async () => {
-    return []
+    const products = await actions.getAllProducts()
+    return products
 }
 
 export default () => {
@@ -43,7 +46,14 @@ export default () => {
             {data.length === 0 ? (
                 <Parts.EmptyList />
             ) : (
-                <>내가 두 눈으로 똑똑하 봤당께요!!</>
+                <Styles.ProductGrid>
+                    {data.map((product) => (
+                        <Parts.ProductListItem
+                            key={product.id}
+                            product={product}
+                        />
+                    ))}
+                </Styles.ProductGrid>
             )}
         </>
     )

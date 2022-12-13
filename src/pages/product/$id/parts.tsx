@@ -40,7 +40,7 @@ export const EditProductInfo: React.FC<{
             return errors
         },
         async onSubmit(values) {
-            const result = await actions.updateProduct(values)
+            await actions.updateProduct(values)
             location.reload()
         },
     })
@@ -81,7 +81,10 @@ export const EditProductInfo: React.FC<{
                     <FormField name="가격 (원)" required>
                         <FInput name="price" type="number" />
                     </FormField>
-                    <FormField name="상세 설명">
+                    <FormField
+                        name="상세 설명"
+                        info="상품을 설명을 적어주세요. 상품의 이름과 함께 표시됩니다."
+                    >
                         <FInput name="info" />
                     </FormField>
                     <FormField name="옵션">{Switch}</FormField>

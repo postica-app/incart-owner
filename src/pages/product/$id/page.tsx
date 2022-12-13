@@ -3,29 +3,25 @@ import { Header1, ProductCard, ProductType } from 'incart-fe-common'
 
 import { Breadcrumb, ControlGroup } from '@/components'
 import { toast } from '@/functions/toast'
-import { supabase } from '@/supabase'
 import { EditProductInfo } from './parts'
+import actions from './actions'
+import { Doc } from '@/types/utils'
 
 export const dataLoader: LoaderFunction = async (props) => {
     const { id } = props.params as {
         id: string
     }
 
-    const result = await supabase
-        .from('product')
-        .select('*')
-        .filter('id', 'eq', id)
-
-    if (result.error) {
+    try {
+        const product = await actions.getProductById(id)
+        return product
+    } catch (e) {
         toast('상품 정보를 가져오지 못했어요', '⚠️')
-        throw result.error
     }
-
-    return result.data[0]
 }
 
 export default () => {
-    const product = useLoaderData() as ProductType
+    const product = useLoaderData() as Doc<ProductType>
 
     return (
         <>
