@@ -1,3 +1,1 @@
-export type Doc<T> = T & {
-    id: string
-}
+export type Doc<T> = T & { id: string }

@@ -1,7 +1,8 @@
 import { Vexile } from '@haechi/flexile'
 import { styled } from 'incart-fe-common'
 import { Outlet } from 'react-router-dom'
-import Sidebar from '../components/Sidebar'
+
+import { Sidebar } from '@/components'
 
 const ContentWrapper = styled(Vexile, {
     margin: '18rem auto',

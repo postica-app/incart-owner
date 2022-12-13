@@ -1,11 +1,11 @@
-import { Hexile } from '@haechi/flexile'
-import { Button, Callout, Text1 } from 'incart-fe-common'
 import { ReactComponent as Support } from 'incart-fe-common/src/icons/Support Agent.svg'
 import { ReactComponent as Cart } from 'incart-fe-common/src/icons/Cart.svg'
+import { Button, Callout, Text1 } from 'incart-fe-common'
 import { useLoaderData } from 'react-router-dom'
+import { Hexile } from '@haechi/flexile'
+
+import { Breadcrumb, Plink } from '@/components'
 import Parts from './parts'
-import { Plink } from '../../components/Atom'
-import { Breadcrumb } from '../../components/Breadcrumb'
 
 export const info = {
     group: '판매',

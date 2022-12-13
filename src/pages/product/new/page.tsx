@@ -1,14 +1,20 @@
-import { Button, FInput, FormField, FormikContext } from 'incart-fe-common'
-import { Breadcrumb } from '../../../components/Breadcrumb'
+import {
+    Button,
+    FInput,
+    FormField,
+    FormikContext,
+    ProductOptionType,
+    ProductType,
+} from 'incart-fe-common'
+import { ReactComponent as Cart } from 'incart-fe-common/src/icons/Cart.svg'
+import { useNavigate } from 'react-router-dom'
+import { useSwitch } from 'incart-fe-common'
 import { Vexile } from '@haechi/flexile'
 import { useFormik } from 'formik'
-import { useSwitch } from 'incart-fe-common'
-import { ReactComponent as Cart } from 'incart-fe-common/src/icons/Cart.svg'
-import { FOptionListEditer } from '../../../components/OptionListEditer'
+
+import { FOptionListEditer, Breadcrumb } from '@/components'
+
 import actions from './actions'
-import { Product } from '../../../types/Product'
-import { ProductOption } from '../../../types/ProductOption'
-import { useNavigate } from 'react-router-dom'
 
 export default () => {
     const [productOptionUsage, _, __, Switch] = useSwitch({
@@ -24,9 +30,9 @@ export default () => {
     const goto = useNavigate()
     const formik = useFormik<
         Partial<
-            Product & {
+            ProductType & {
                 optionName: string
-                options: ProductOption[]
+                options: ProductOptionType[]
             }
         >
     >({

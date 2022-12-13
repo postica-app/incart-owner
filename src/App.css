@@ -1,16 +1,16 @@
 html {
-  font-size: 3.2px;
+    font-size: 3.2px;
 }
 
 body {
-  margin: 0px;
+    margin: 0px;
 }
 
 * {
-  font-family: "SUIT";
+    font-family: 'SUIT';
 }
 
 input {
-  font-family: "SUIT";
-  font-size: 4rem;
+    font-family: 'SUIT';
+    font-size: 4rem;
 }

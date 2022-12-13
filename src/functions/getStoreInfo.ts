@@ -1,6 +1,6 @@
-import { supabase } from '../supabase'
-import { Store } from '../types/Store'
-import { Doc } from '../types/utils'
+import { supabase } from '@/supabase'
+import { Doc } from '@/types/utils'
+import { StoreType } from 'incart-fe-common'
 import { memo } from './memo'
 import { toast } from './toast'
 
@@ -11,5 +11,5 @@ export const storeInfo = memo('storeInfo', 1000 * 60 * 60, async () => {
         throw new Error('Cannot fetch store data')
     }
 
-    return store.data[0] as Doc<Store>
+    return store.data[0] as Doc<StoreType>
 })

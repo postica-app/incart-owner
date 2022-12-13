@@ -1,15 +1,15 @@
-import { Hexile, Vexile } from '@haechi/flexile'
-import { Button, Header1, Text1 } from 'incart-fe-common'
+import { ReactComponent as Storefront } from 'incart-fe-common/src/icons/Storefront.svg'
 import { ReactComponent as Logo } from 'incart-fe-common/src/brand/TextLogo.svg'
 import { ReactComponent as Person } from 'incart-fe-common/src/icons/Person.svg'
-import { ReactComponent as Storefront } from 'incart-fe-common/src/icons/Storefront.svg'
-import { ComponentProps } from 'react'
+import { Button, Header1, Text1 } from 'incart-fe-common'
+import { Hexile, Vexile } from '@haechi/flexile'
 import { NavLink } from 'react-router-dom'
-import { ICON_SIZE_24 } from '../../constants'
+import { ComponentProps } from 'react'
 
+import { ICON_SIZE_24 } from '../../constants'
 import styles from './styles'
 
-// TODO: Replace these linkes with Object Record
+// TODO: Replace these linkes with dynamic imports
 const PAGE_LINKS = [
     {
         groupName: '판매',

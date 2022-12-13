@@ -1,4 +1,3 @@
-import { Hexile, Vexile } from '@haechi/flexile'
 import { ReactComponent as X } from 'incart-fe-common/src/icons/X.svg'
 import {
     Header1,
@@ -6,18 +5,20 @@ import {
     FInput,
     FormikContext,
     Button,
+    ProductOptionType,
 } from 'incart-fe-common'
-import { ICON_SIZE_24 } from '../../constants'
 import { useFormik } from 'formik'
-import { ProductOption } from '../../types/ProductOption'
+
+import { Hexile, Vexile } from '@haechi/flexile'
+import { ICON_SIZE_24 } from '@/constants'
 
 export const OptionEditModal: React.FC<{
     closeModal: () => void
-    onSubmit: (newOption: ProductOption) => void
-    options: ProductOption[]
-    editExistingOption?: ProductOption
+    onSubmit: (newOption: ProductOptionType) => void
+    options: ProductOptionType[]
+    editExistingOption?: ProductOptionType
 }> = (props) => {
-    const formik = useFormik<ProductOption>({
+    const formik = useFormik<ProductOptionType>({
         initialValues: props.editExistingOption || {
             name: '',
             priceDelta: undefined,

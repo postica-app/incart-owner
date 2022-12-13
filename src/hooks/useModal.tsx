@@ -1,6 +1,6 @@
 import { useSetAtom } from 'jotai'
 import { useCallback } from 'react'
-import { modalContentAtom } from '../jotai'
+import { modalContentAtom } from '@/jotai'
 
 export const useModal = () => {
     const setModalContent = useSetAtom(modalContentAtom)

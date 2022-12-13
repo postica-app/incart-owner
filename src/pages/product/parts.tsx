@@ -1,5 +1,6 @@
-import { Header1, Text1 } from 'incart-fe-common'
 import emptyHandImage from 'incart-fe-common/src/images/empty-hand.png'
+import { Text1 } from 'incart-fe-common'
+
 import { EmptyListStyles } from './styles'
 
 export default {

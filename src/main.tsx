@@ -1,10 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { Toaster } from 'react-hot-toast'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './App.css'
-import { Modal } from './components/Modal'
+import { Toaster } from 'react-hot-toast'
+import ReactDOM from 'react-dom/client'
+import React from 'react'
+
+import { Modal } from './components'
 import Layout from './pages/layout'
+import './App.css'
 
 const pages = await Promise.all(
     Object.entries(import.meta.glob('/src/pages/**/page.tsx')).map(
@@ -19,7 +20,7 @@ const pages = await Promise.all(
             }
 
             return {
-                path: path.split('/').slice(3, -1).join('/'),
+                path: path.split('/').slice(3, -1).join('/').replace('$', ':'),
                 element: <target.default />,
                 loader: target.dataLoader,
             }

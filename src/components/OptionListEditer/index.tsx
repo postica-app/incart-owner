@@ -1,18 +1,19 @@
+import { ProductOptionType, Text1, useField } from 'incart-fe-common'
 import { Vexile } from '@haechi/flexile'
-import { Text1, useField } from 'incart-fe-common'
+
 import { ReactComponent as Config } from 'incart-fe-common/src/icons/Config.svg'
 import { ReactComponent as X } from 'incart-fe-common/src/icons/X.svg'
-import { ICON_SIZE_24 } from '../../constants'
-import { useModal } from '../../hooks/useModal'
-import { ProductOption } from '../../types/ProductOption'
+
+import { useModal } from '@/hooks/useModal'
+import { ICON_SIZE_24 } from '@/constants'
 import { OptionEditModal } from './parts'
 import styles from './styles'
 
 export const OptionListEditerView: React.FC<{
-    options: ProductOption[]
+    options: ProductOptionType[]
     onAddNewOptionClicked?: () => void
-    onRemoveOptionClicked?: (option: ProductOption) => void
-    onEditOptionClicked?: (option: ProductOption) => void
+    onRemoveOptionClicked?: (option: ProductOptionType) => void
+    onEditOptionClicked?: (option: ProductOptionType) => void
 }> = (props) => {
     return (
         <Vexile gap={3}>
@@ -49,8 +50,8 @@ export const OptionListEditerView: React.FC<{
 }
 
 export const OptionListEditer: React.FC<{
-    options: ProductOption[]
-    onChange: (newOptions: ProductOption[]) => void
+    options: ProductOptionType[]
+    onChange: (newOptions: ProductOptionType[]) => void
 }> = (props) => {
     const showModal = useModal()
 

@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai'
-import { modalContentAtom } from '../../jotai'
+import { modalContentAtom } from '@/jotai'
 import styles from './styles'
 
 export const Modal = () => {
