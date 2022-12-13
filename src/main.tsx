@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { Toaster } from 'react-hot-toast'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
+import { Modal } from './components/Modal'
 import Layout from './pages/layout'
 
 const pages = await Promise.all(
@@ -31,6 +33,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
+        <Modal />
+        <Toaster />
         <RouterProvider router={router} />
     </React.StrictMode>
 )

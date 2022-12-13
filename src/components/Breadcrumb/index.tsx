@@ -1,7 +1,7 @@
-import { Hexile } from '@haechi/flexile'
 import { Header1, Text1 } from 'incart-fe-common'
-import { useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
+import { Hexile } from '@haechi/flexile'
+import { useMemo } from 'react'
 import { Plink } from '../Atom'
 
 const REPLACE_MAP: Record<string, string> = {
@@ -23,14 +23,12 @@ export const Breadcrumb: React.FC = () => {
     return (
         <Hexile gap={3} y="center">
             {readablePaths.slice(0, -1).map((path, index) => (
-                <>
-                    <Text1>
-                        <Plink to={'/' + paths.slice(0, index + 1).join('/')}>
-                            {path}
-                        </Plink>
-                        {' >'}
-                    </Text1>
-                </>
+                <Text1 key={path}>
+                    <Plink to={'/' + paths.slice(0, index + 1).join('/')}>
+                        {path}
+                    </Plink>
+                    {' >'}
+                </Text1>
             ))}
             {<Header1>{readablePaths[readablePaths.length - 1]}</Header1>}
         </Hexile>

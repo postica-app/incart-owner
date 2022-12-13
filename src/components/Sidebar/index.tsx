@@ -5,6 +5,7 @@ import { ReactComponent as Person } from 'incart-fe-common/src/icons/Person.svg'
 import { ReactComponent as Storefront } from 'incart-fe-common/src/icons/Storefront.svg'
 import { ComponentProps } from 'react'
 import { NavLink } from 'react-router-dom'
+import { ICON_SIZE_24 } from '../../constants'
 
 import styles from './styles'
 
@@ -49,11 +50,6 @@ const PAGE_LINKS = [
         ],
     },
 ]
-
-const ICON_SIZE_24 = {
-    width: '6rem',
-    height: '6rem',
-}
 
 export const Sidebar: React.FC<ComponentProps<typeof styles['Wrapper']>> = (
     props

@@ -9,10 +9,13 @@ specifiers:
   '@types/react': ^18.0.26
   '@types/react-dom': ^18.0.9
   '@vitejs/plugin-react': ^3.0.0
+  formik: ^2.2.9
   incart-fe-common: github:ryconics/incart-fe-common
+  jotai: ^1.11.2
   namisa: file:..\namisa
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-hot-toast: ^2.4.0
   react-router-dom: ^6.4.5
   typescript: ^4.9.3
   vite: ^4.0.0
@@ -23,10 +26,13 @@ dependencies:
   '@stitches/react': 1.2.8_react@18.2.0
   '@supabase/supabase-js': 2.1.3
   '@svgr/rollup': 6.5.1
-  incart-fe-common: github.com/ryconics/incart-fe-common/2332a0b3d7c5caa5e416ff26afce0fb8bbfb24d1_rolo3tbsr4j7wmg4qr2yc3sdmu
+  formik: 2.2.9_react@18.2.0
+  incart-fe-common: github.com/ryconics/incart-fe-common/1b94613a21a1404bdf763363acfc7f77f71cb128_ym4ntn4d2hslvajtdlubaza474
+  jotai: 1.11.2_react@18.2.0
   namisa: file:../namisa_2anlgt5m5qu4smwwbiij54dvra
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-hot-toast: 2.4.0_biqbaboplfbrettd7655fr4n2y
   react-router-dom: 6.4.5_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
@@ -2364,6 +2370,12 @@ packages:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
     engines: {node: '>=4'}
 
+  /goober/2.1.11:
+    resolution: {integrity: sha512-5SS2lmxbhqH0u9ABEWq7WPU69a4i2pYcHeCxqaNq6Cw3mnrF0ghWNM4tEGid4dKy8XNIAUbuThuozDHHKJVh3A==}
+    peerDependencies:
+      csstype: ^3.0.10
+    dev: false
+
   /has-flag/3.0.0:
     resolution: {integrity: sha512-sKJf1+ceQBr4SMkvQnBDNDtf4TXpVhVGateu0t918bl30FnbE2m4vNLX+VWe/dpjlb+HugGYzW7uQXH98HPEYw==}
     engines: {node: '>=4'}
@@ -2464,6 +2476,46 @@ packages:
 
   /is-typedarray/1.0.0:
     resolution: {integrity: sha512-cyA56iCMHAh5CdzjJIa4aohJyeO1YbwLi3Jc35MmRU6poroFjIGZzUzupGiRPOjgHg9TLu43xbpwXk523fMxKA==}
+    dev: false
+
+  /jotai/1.11.2_react@18.2.0:
+    resolution: {integrity: sha512-hVLn1aS1QprDy+NrvyWIOcaA/LEG5AY0Z7kWtx26EJ8eH8DY8pW1wUM0PrlqQzthqd6HdEVtXLY1rB//0n8LvA==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@babel/core': '*'
+      '@babel/template': '*'
+      jotai-immer: '*'
+      jotai-optics: '*'
+      jotai-redux: '*'
+      jotai-tanstack-query: '*'
+      jotai-urql: '*'
+      jotai-valtio: '*'
+      jotai-xstate: '*'
+      jotai-zustand: '*'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@babel/template':
+        optional: true
+      jotai-immer:
+        optional: true
+      jotai-optics:
+        optional: true
+      jotai-redux:
+        optional: true
+      jotai-tanstack-query:
+        optional: true
+      jotai-urql:
+        optional: true
+      jotai-valtio:
+        optional: true
+      jotai-xstate:
+        optional: true
+      jotai-zustand:
+        optional: true
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /js-tokens/4.0.0:
@@ -3029,6 +3081,20 @@ packages:
     resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
     dev: false
 
+  /react-hot-toast/2.4.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-qnnVbXropKuwUpriVVosgo8QrB+IaPJCpL8oBI6Ov84uvHZ5QQcTp2qg6ku2wNfgJl6rlQXJIQU5q+5lmPOutA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      goober: 2.1.11
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    transitivePeerDependencies:
+      - csstype
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
@@ -3516,14 +3582,15 @@ packages:
       typescript: 4.9.4
     dev: false
 
-  github.com/ryconics/incart-fe-common/2332a0b3d7c5caa5e416ff26afce0fb8bbfb24d1_rolo3tbsr4j7wmg4qr2yc3sdmu:
-    resolution: {tarball: https://codeload.github.com/ryconics/incart-fe-common/tar.gz/2332a0b3d7c5caa5e416ff26afce0fb8bbfb24d1}
-    id: github.com/ryconics/incart-fe-common/2332a0b3d7c5caa5e416ff26afce0fb8bbfb24d1
+  github.com/ryconics/incart-fe-common/1b94613a21a1404bdf763363acfc7f77f71cb128_ym4ntn4d2hslvajtdlubaza474:
+    resolution: {tarball: https://codeload.github.com/ryconics/incart-fe-common/tar.gz/1b94613a21a1404bdf763363acfc7f77f71cb128}
+    id: github.com/ryconics/incart-fe-common/1b94613a21a1404bdf763363acfc7f77f71cb128
     name: incart-fe-common
     version: 0.0.0
     peerDependencies:
       '@haechi/flexile': ^1.4.7
       '@stitches/react': ^1.2.8
+      formik: ^2.2.9
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
