@@ -3,9 +3,18 @@ import { Toaster } from 'react-hot-toast'
 import ReactDOM from 'react-dom/client'
 import React from 'react'
 
+import { supabase } from './supabase'
 import { Modal } from './components'
 import Layout from './pages/layout'
 import './App.css'
+
+declare global {
+    interface Window {
+        supabase: typeof supabase
+    }
+}
+
+window.supabase = supabase
 
 const pages = await Promise.all(
     Object.entries(import.meta.glob('/src/pages/**/page.tsx')).map(

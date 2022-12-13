@@ -3,7 +3,6 @@ lockfileVersion: 5.4
 specifiers:
   '@haechi/flexile': ^1.4.7
   '@mdx-js/rollup': ^2.1.5
-  '@stitches/react': ^1.2.8
   '@supabase/supabase-js': ^2.1.3
   '@svgr/rollup': ^6.5.1
   '@types/node': ^18.11.14
@@ -22,13 +21,12 @@ specifiers:
   vite: ^4.0.0
 
 dependencies:
-  '@haechi/flexile': 1.4.7_53dvjuzlopr65nk4aisagoleua
+  '@haechi/flexile': 1.4.7_biqbaboplfbrettd7655fr4n2y
   '@mdx-js/rollup': 2.1.5
-  '@stitches/react': 1.2.8_react@18.2.0
   '@supabase/supabase-js': 2.1.3
   '@svgr/rollup': 6.5.1
   formik: 2.2.9_react@18.2.0
-  incart-fe-common: github.com/ryconics/incart-fe-common/c682834bf82da02966ff53dc0a0df0fab421e919_ym4ntn4d2hslvajtdlubaza474
+  incart-fe-common: github.com/ryconics/incart-fe-common/918c3513db95df8a20b8ec1a750237ab257934ba_7xxp425dby3zxvpeizggtiuq34
   jotai: 1.11.2_react@18.2.0
   namisa: file:../namisa_2anlgt5m5qu4smwwbiij54dvra
   react: 18.2.0
@@ -1504,14 +1502,13 @@ packages:
     dev: true
     optional: true
 
-  /@haechi/flexile/1.4.7_53dvjuzlopr65nk4aisagoleua:
+  /@haechi/flexile/1.4.7_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-n2IzvS5tC45JDrMoGtEo0yX1FSEln8g0OUos1r9+jGT7uf1YBBfU5a34EJIwGnARe5mfpmPSHwGoicLBic46zw==}
     peerDependencies:
       '@stitches/react': ^1.2.6
       react: ^17.0.2
       react-dom: ^17.0.2
     dependencies:
-      '@stitches/react': 1.2.8_react@18.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
@@ -3589,19 +3586,18 @@ packages:
       typescript: 4.9.4
     dev: false
 
-  github.com/ryconics/incart-fe-common/c682834bf82da02966ff53dc0a0df0fab421e919_ym4ntn4d2hslvajtdlubaza474:
-    resolution: {tarball: https://codeload.github.com/ryconics/incart-fe-common/tar.gz/c682834bf82da02966ff53dc0a0df0fab421e919}
-    id: github.com/ryconics/incart-fe-common/c682834bf82da02966ff53dc0a0df0fab421e919
+  github.com/ryconics/incart-fe-common/918c3513db95df8a20b8ec1a750237ab257934ba_7xxp425dby3zxvpeizggtiuq34:
+    resolution: {tarball: https://codeload.github.com/ryconics/incart-fe-common/tar.gz/918c3513db95df8a20b8ec1a750237ab257934ba}
+    id: github.com/ryconics/incart-fe-common/918c3513db95df8a20b8ec1a750237ab257934ba
     name: incart-fe-common
     version: 0.0.0
     peerDependencies:
       '@haechi/flexile': ^1.4.7
-      '@stitches/react': ^1.2.8
       formik: ^2.2.9
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
-      '@haechi/flexile': 1.4.7_53dvjuzlopr65nk4aisagoleua
+      '@haechi/flexile': 1.4.7_biqbaboplfbrettd7655fr4n2y
       '@stitches/react': 1.2.8_react@18.2.0
       formik: 2.2.9_react@18.2.0
       react: 18.2.0
