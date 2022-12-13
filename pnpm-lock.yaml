@@ -23,7 +23,7 @@ dependencies:
   '@stitches/react': 1.2.8_react@18.2.0
   '@supabase/supabase-js': 2.1.3
   '@svgr/rollup': 6.5.1
-  incart-fe-common: github.com/ryconics/incart-fe-common/6e57b3175635e86c8dff048d3d4fd54fab1c29c7_rolo3tbsr4j7wmg4qr2yc3sdmu
+  incart-fe-common: github.com/ryconics/incart-fe-common/2332a0b3d7c5caa5e416ff26afce0fb8bbfb24d1_rolo3tbsr4j7wmg4qr2yc3sdmu
   namisa: file:../namisa_2anlgt5m5qu4smwwbiij54dvra
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -3516,9 +3516,9 @@ packages:
       typescript: 4.9.4
     dev: false
 
-  github.com/ryconics/incart-fe-common/6e57b3175635e86c8dff048d3d4fd54fab1c29c7_rolo3tbsr4j7wmg4qr2yc3sdmu:
-    resolution: {tarball: https://codeload.github.com/ryconics/incart-fe-common/tar.gz/6e57b3175635e86c8dff048d3d4fd54fab1c29c7}
-    id: github.com/ryconics/incart-fe-common/6e57b3175635e86c8dff048d3d4fd54fab1c29c7
+  github.com/ryconics/incart-fe-common/2332a0b3d7c5caa5e416ff26afce0fb8bbfb24d1_rolo3tbsr4j7wmg4qr2yc3sdmu:
+    resolution: {tarball: https://codeload.github.com/ryconics/incart-fe-common/tar.gz/2332a0b3d7c5caa5e416ff26afce0fb8bbfb24d1}
+    id: github.com/ryconics/incart-fe-common/2332a0b3d7c5caa5e416ff26afce0fb8bbfb24d1
     name: incart-fe-common
     version: 0.0.0
     peerDependencies:

@@ -1,9 +1,11 @@
 import { Hexile } from '@haechi/flexile'
-import { Button, Callout, Header1, styled, Text1 } from 'incart-fe-common'
+import { Button, Callout, Text1 } from 'incart-fe-common'
 import { ReactComponent as Support } from 'incart-fe-common/src/icons/Support Agent.svg'
 import { ReactComponent as Cart } from 'incart-fe-common/src/icons/Cart.svg'
 import { useLoaderData } from 'react-router-dom'
 import Parts from './parts'
+import { Plink } from '../../components/Atom'
+import { Breadcrumb } from '../../components/Breadcrumb'
 
 export const info = {
     group: '판매',
@@ -24,12 +26,18 @@ export default () => {
             </Callout>
             <Hexile x="space" y="center">
                 <Hexile y="center" gap={3}>
-                    <Header1>상품</Header1>
+                    <Breadcrumb />
                     <Text1>{data.length}개</Text1>
                 </Hexile>
-                <Button icon={(style) => <Cart style={style} />} ghost>
-                    새 상품 등록
-                </Button>
+                <Plink to={'new'}>
+                    <Button
+                        icon={(style) => <Cart style={style} />}
+                        ghost
+                        active={true}
+                    >
+                        새 상품 등록
+                    </Button>
+                </Plink>
             </Hexile>
 
             {data.length === 0 ? (
