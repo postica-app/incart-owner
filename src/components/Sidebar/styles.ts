@@ -8,6 +8,7 @@ export default {
     NavSection: styled('div', {
         padding: '3rem',
         borderRadius: '3rem',
+        clickAnimation: true,
         '&>p': {
             color: '$grey5',
         },

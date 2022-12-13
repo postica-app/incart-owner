@@ -6,7 +6,9 @@ export const Plink = styled(Link, {
     textDecoration: 'none',
     variants: {
         animation: {
-            true: {},
+            true: {
+                clickAnimation: true,
+            },
         },
     },
 })

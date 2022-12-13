@@ -26,7 +26,7 @@ dependencies:
   '@supabase/supabase-js': 2.1.3
   '@svgr/rollup': 6.5.1
   formik: 2.2.9_react@18.2.0
-  incart-fe-common: github.com/ryconics/incart-fe-common/918c3513db95df8a20b8ec1a750237ab257934ba_7xxp425dby3zxvpeizggtiuq34
+  incart-fe-common: github.com/ryconics/incart-fe-common/e46e1c3afc99b4879454ef3a50a27eda2a6cb7d4_7xxp425dby3zxvpeizggtiuq34
   jotai: 1.11.2_react@18.2.0
   namisa: file:../namisa_2anlgt5m5qu4smwwbiij54dvra
   react: 18.2.0
@@ -3586,9 +3586,9 @@ packages:
       typescript: 4.9.4
     dev: false
 
-  github.com/ryconics/incart-fe-common/918c3513db95df8a20b8ec1a750237ab257934ba_7xxp425dby3zxvpeizggtiuq34:
-    resolution: {tarball: https://codeload.github.com/ryconics/incart-fe-common/tar.gz/918c3513db95df8a20b8ec1a750237ab257934ba}
-    id: github.com/ryconics/incart-fe-common/918c3513db95df8a20b8ec1a750237ab257934ba
+  github.com/ryconics/incart-fe-common/e46e1c3afc99b4879454ef3a50a27eda2a6cb7d4_7xxp425dby3zxvpeizggtiuq34:
+    resolution: {tarball: https://codeload.github.com/ryconics/incart-fe-common/tar.gz/e46e1c3afc99b4879454ef3a50a27eda2a6cb7d4}
+    id: github.com/ryconics/incart-fe-common/e46e1c3afc99b4879454ef3a50a27eda2a6cb7d4
     name: incart-fe-common
     version: 0.0.0
     peerDependencies:
