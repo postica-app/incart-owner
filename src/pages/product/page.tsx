@@ -9,11 +9,6 @@ import Parts from './parts'
 import actions from './actions'
 import Styles from './styles'
 
-export const info = {
-    group: '판매',
-    name: '상품 목록',
-}
-
 export const dataLoader = async () => {
     const products = await actions.getAllProducts()
     return products

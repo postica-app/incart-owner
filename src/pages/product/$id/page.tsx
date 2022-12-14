@@ -1,24 +1,9 @@
-import { LoaderFunction, useLoaderData, useParams } from 'react-router-dom'
 import { Header1, ProductCard, ProductType } from 'incart-fe-common'
+import { useLoaderData } from 'react-router-dom'
 
 import { Breadcrumb, ControlGroup } from '@/components'
-import { toast } from '@/functions/toast'
 import { EditProductInfo } from './parts'
-import actions from './actions'
 import { Doc } from '@/types/utils'
-
-export const dataLoader: LoaderFunction = async (props) => {
-    const { id } = props.params as {
-        id: string
-    }
-
-    try {
-        const product = await actions.getProductById(id)
-        return product
-    } catch (e) {
-        toast('상품 정보를 가져오지 못했어요', '⚠️')
-    }
-}
 
 export default () => {
     const product = useLoaderData() as Doc<ProductType>

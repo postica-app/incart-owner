@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import ReactDOM from 'react-dom/client'
-import React from 'react'
+import React, { ComponentType, lazy, Suspense } from 'react'
 
 import { supabase } from './supabase'
 import { Modal } from './components'
@@ -20,13 +20,29 @@ const main = async () => {
     const pages = await Promise.all(
         Object.entries(import.meta.glob('/src/pages/**/page.tsx')).map(
             async ([path, importTarget]) => {
-                const target = (await importTarget()) as {
-                    default: React.FC
-                    info: {
-                        group: string
-                        name: string
-                    }
-                    dataLoader: () => unknown
+                // const target = (await importTarget()) as {
+                //     default: React.FC
+                //     info: {
+                //         group: string
+                //         name: string
+                //     }
+                //     dataLoader: () => unknown
+                // }
+
+                const Page = lazy(
+                    () => importTarget() as Promise<{ default: ComponentType }>
+                )
+
+                const loaderPath = [
+                    ...path.split('/').slice(0, -1),
+                    'loader.ts',
+                ].join('/')
+                let loader
+
+                try {
+                    loader = (await import(loaderPath)).default
+                } catch (e) {
+                    console.error(e)
                 }
 
                 return {
@@ -35,8 +51,13 @@ const main = async () => {
                         .slice(3, -1)
                         .join('/')
                         .replace('$', ':'),
-                    element: <target.default />,
-                    loader: target.dataLoader,
+                    element: (
+                        <Suspense>
+                            <Page />
+                        </Suspense>
+                    ),
+                    // element: <target.default />,
+                    loader,
                 }
             }
         )
