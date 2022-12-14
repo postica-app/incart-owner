@@ -5,17 +5,12 @@ import { useLoaderData } from 'react-router-dom'
 import { Hexile } from '@haechi/flexile'
 
 import { Breadcrumb, Plink } from '@/components'
-import Parts from './parts'
-import actions from './actions'
 import Styles from './styles'
-
-export const dataLoader = async () => {
-    const products = await actions.getAllProducts()
-    return products
-}
+import loader from './loader'
+import Parts from './parts'
 
 export default () => {
-    const data = useLoaderData() as Awaited<ReturnType<typeof dataLoader>>
+    const data = useLoaderData() as Awaited<ReturnType<typeof loader>>
 
     return (
         <>

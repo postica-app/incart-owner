@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import {
+    createBrowserRouter,
+    LoaderFunction,
+    RouterProvider,
+} from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import ReactDOM from 'react-dom/client'
 import React, { ComponentType, lazy, Suspense } from 'react'
@@ -17,36 +21,23 @@ declare global {
 window.supabase = supabase
 
 const main = async () => {
+    const loaders = Object.entries(import.meta.glob('/src/pages/**/loader.ts'))
+
     const pages = await Promise.all(
         Object.entries(import.meta.glob('/src/pages/**/page.tsx')).map(
-            async ([path, importTarget]) => {
-                // const target = (await importTarget()) as {
-                //     default: React.FC
-                //     info: {
-                //         group: string
-                //         name: string
-                //     }
-                //     dataLoader: () => unknown
-                // }
-
+            async ([pagePath, importPage]) => {
                 const Page = lazy(
-                    () => importTarget() as Promise<{ default: ComponentType }>
+                    () => importPage() as Promise<{ default: ComponentType }>
                 )
 
-                const loaderPath = [
-                    ...path.split('/').slice(0, -1),
-                    'loader.ts',
-                ].join('/')
-                let loader
-
-                try {
-                    loader = (await import(loaderPath)).default
-                } catch (e) {
-                    console.error(e)
-                }
+                let loader = loaders.find(
+                    ([loaderPath]) =>
+                        loaderPath.split('/').slice(0, -1).join('/') ==
+                        pagePath.split('/').slice(0, -1).join('/')
+                )
 
                 return {
-                    path: path
+                    path: pagePath
                         .split('/')
                         .slice(3, -1)
                         .join('/')
@@ -56,8 +47,13 @@ const main = async () => {
                             <Page />
                         </Suspense>
                     ),
-                    // element: <target.default />,
-                    loader,
+                    loader:
+                        loader &&
+                        (
+                            (await loader[1]()) as {
+                                default: LoaderFunction
+                            }
+                        ).default,
                 }
             }
         )
