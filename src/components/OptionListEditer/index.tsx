@@ -10,14 +10,14 @@ import { OptionEditModal } from './parts'
 import styles from './styles'
 
 export const OptionListEditerView: React.FC<{
-    options: ProductOptionType[]
+    options?: ProductOptionType[]
     onAddNewOptionClicked?: () => void
     onRemoveOptionClicked?: (option: ProductOptionType) => void
     onEditOptionClicked?: (option: ProductOptionType) => void
 }> = (props) => {
     return (
         <Vexile gap={3}>
-            {props.options.map((option) => (
+            {props.options?.map((option) => (
                 <styles.Item
                     y="center"
                     key={option.name}

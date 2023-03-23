@@ -8,6 +8,7 @@ import { Doc } from '@/types/utils'
 export default () => {
     const product = useLoaderData() as Doc<ProductType>
 
+    console.log(product)
     return (
         <>
             <Breadcrumb customReadable={['상품', product.name]} />

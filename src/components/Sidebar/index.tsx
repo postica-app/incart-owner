@@ -1,7 +1,7 @@
 import { ReactComponent as Storefront } from 'incart-fe-common/src/icons/Storefront.svg'
 import { ReactComponent as Logo } from 'incart-fe-common/src/brand/TextLogo.svg'
 import { ReactComponent as Person } from 'incart-fe-common/src/icons/Person.svg'
-import { Button, Header1, Text1 } from 'incart-fe-common'
+import { Button, colors, Header1, Text1 } from 'incart-fe-common'
 import { Hexile, Vexile } from '@haechi/flexile'
 import { NavLink } from 'react-router-dom'
 import { ComponentProps } from 'react'
@@ -56,7 +56,10 @@ export const Sidebar: React.FC<ComponentProps<typeof styles['Wrapper']>> = (
 ) => {
     return (
         <styles.Wrapper gap={12} {...props}>
-            <Logo style={{ height: '7rem', width: '28rem' }} />
+            <Logo
+                style={{ height: '7rem', width: '28rem' }}
+                color={colors.purple}
+            />
             <Vexile gap={6}>
                 <Vexile gap={2}>
                     <Hexile gap={1.5} y="center">
