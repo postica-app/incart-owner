@@ -50,19 +50,20 @@ export const OptionListEditerView: React.FC<{
 }
 
 export const OptionListEditer: React.FC<{
-    options: ProductOptionType[]
+    options?: ProductOptionType[]
     onChange: (newOptions: ProductOptionType[]) => void
 }> = (props) => {
     const showModal = useModal()
+    const options = props.options || []
 
     return (
         <OptionListEditerView
             options={props.options}
             onRemoveOptionClicked={(option) => {
-                const editIndex = props.options.indexOf(option)
+                const editIndex = options.indexOf(option)
                 props.onChange([
-                    ...props.options.slice(0, editIndex),
-                    ...props.options.slice(editIndex + 1),
+                    ...options.slice(0, editIndex),
+                    ...options.slice(editIndex + 1),
                 ])
             }}
             onEditOptionClicked={(option) => {
@@ -72,11 +73,11 @@ export const OptionListEditer: React.FC<{
                         options={props.options}
                         editExistingOption={option}
                         onSubmit={(newOption) => {
-                            const editIndex = props.options.indexOf(option)
+                            const editIndex = options.indexOf(option)
                             props.onChange([
-                                ...props.options.slice(0, editIndex),
+                                ...options.slice(0, editIndex),
                                 newOption,
-                                ...props.options.slice(editIndex + 1),
+                                ...options.slice(editIndex + 1),
                             ])
                         }}
                     />
@@ -88,7 +89,7 @@ export const OptionListEditer: React.FC<{
                         closeModal={() => closeModal()}
                         options={props.options}
                         onSubmit={(newOption) =>
-                            props.onChange([...props.options, newOption])
+                            props.onChange([...options, newOption])
                         }
                     />
                 )

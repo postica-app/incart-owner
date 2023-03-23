@@ -6,8 +6,9 @@ export default {
         backgroundColor: 'rgba(0, 0, 0, 0.1)',
         inset: '0px',
         position: 'fixed',
-        display: 'grid',
-        placeItems: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         padding: '6rem',
         zIndex: 2,
         '&>*:not(:last-child)': {

@@ -15,7 +15,7 @@ import { ICON_SIZE_24 } from '@/constants'
 export const OptionEditModal: React.FC<{
     closeModal: () => void
     onSubmit: (newOption: ProductOptionType) => void
-    options: ProductOptionType[]
+    options?: ProductOptionType[]
     editExistingOption?: ProductOptionType
 }> = (props) => {
     const formik = useFormik<ProductOptionType>({
@@ -33,7 +33,7 @@ export const OptionEditModal: React.FC<{
 
             if (
                 !props.editExistingOption &&
-                props.options.some((option) => option.name === values.name)
+                props.options?.some((option) => option.name === values.name)
             ) {
                 errors.name = '이미 추가된 옵션과 이름이 동일합니다'
             }
@@ -48,8 +48,8 @@ export const OptionEditModal: React.FC<{
 
     return (
         <>
-            <form onSubmit={formik.handleSubmit}>
-                <FormikContext.Provider value={formik}>
+            <FormikContext.Provider value={formik}>
+                <form onSubmit={formik.handleSubmit}>
                     <Vexile gap={6}>
                         <Hexile x="space" y="center">
                             <Header1>옵션 추가</Header1>
@@ -79,8 +79,8 @@ export const OptionEditModal: React.FC<{
                         </FormField>
                         <Button type="submit">+ 옵션 추가하기</Button>
                     </Vexile>
-                </FormikContext.Provider>
-            </form>
+                </form>
+            </FormikContext.Provider>
         </>
     )
 }
