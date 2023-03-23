@@ -10,6 +10,7 @@ import React, { ComponentType, lazy, Suspense } from 'react'
 import { supabase } from './supabase'
 import { Modal } from './components'
 import Layout from './pages/layout'
+import "incart-fe-common/src/fonts/seed.css"
 import './App.css'
 
 declare global {
