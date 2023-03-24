@@ -20,7 +20,8 @@
         "react-dom": "^18.2.0",
         "react-hot-toast": "^2.4.0",
         "react-router-dom": "^6.4.5",
-        "tui-grid": "^4.21.7"
+        "tui-grid": "^4.21.7",
+        "yup": "^1.0.2"
     },
     "devDependencies": {
         "@mdx-js/rollup": "^2.1.5",
