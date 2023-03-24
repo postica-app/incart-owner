@@ -57,7 +57,7 @@ export const EditProductInfo: React.FC<{
                 <FloatingCheckButton
                     visible={formik.dirty}
                     ghost={{
-                        icon: (style) => <Refresh style={style} />,
+                        icon: (props) => <Refresh {...props} />,
                         children: '기본 설정으로 되돌리기',
                         active: !formik.isSubmitting,
                         onClick() {
@@ -65,7 +65,7 @@ export const EditProductInfo: React.FC<{
                         },
                     }}
                     normal={{
-                        icon: (style) => <Check style={style} />,
+                        icon: (props) => <Check {...props} />,
                         children: '변경사항 저장',
                         active: !formik.isSubmitting,
                         type: 'submit',

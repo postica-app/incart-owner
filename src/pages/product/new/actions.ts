@@ -5,7 +5,7 @@ import { supabase } from '@/supabase'
 import { Doc } from '@/types/utils'
 
 export default {
-    async createNewProduct(product: ProductType) {
+    async createNewProduct(product: Omit<ProductType, 'store_id'>) {
         const insertResult = await supabase
             .from('product')
             .insert({ ...product, store_id: (await storeInfo()).id })

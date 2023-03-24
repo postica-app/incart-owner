@@ -53,7 +53,7 @@ export default () => {
                               items: values.options,
                           },
                       ]
-                    : undefined,
+                    : [],
             })
             goto('/product/' + result.id)
         },
@@ -97,7 +97,7 @@ export default () => {
                         </>
                     )}
                     <Button
-                        icon={(style) => <Cart style={style} />}
+                        icon={(props) => <Cart {...props} />}
                         active={!formik.isSubmitting}
                         type="submit"
                     >

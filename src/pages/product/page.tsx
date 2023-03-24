@@ -24,7 +24,7 @@ export default () => {
                 </Hexile>
                 <Plink to={'new'}>
                     <Button
-                        icon={(style) => <Cart style={style} />}
+                        icon={(props) => <Cart {...props} />}
                         ghost
                         active={true}
                     >
