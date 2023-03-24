@@ -3250,7 +3250,7 @@ __metadata:
 
 "incart-fe-common@https://github.com/postica-app/incart-fe-common":
   version: 0.0.0
-  resolution: "incart-fe-common@https://github.com/postica-app/incart-fe-common.git#commit=73feabdb1fbbc0b9dd2acdb3ff53d1ca6742dcec"
+  resolution: "incart-fe-common@https://github.com/postica-app/incart-fe-common.git#commit=86825bdfaab25437c7af60f65f0025c73afa54c0"
   dependencies:
     "@haechi/flexile": "npm:^1.4.7"
     "@stitches/react": "npm:^1.2.8"
@@ -3264,7 +3264,7 @@ __metadata:
     formik: ^2.2.9
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: ff0138ab968200dd6eb86ce049fc9dbc435b63240c9223f9cd24de5647e9b2559b579b6f3e4d638474a896877a7f05c380b4418c00891ba989a4655d68377668
+  checksum: 681da1f62bca849c578573b7537acf87eca94237ae5099d2069d0c7ab5fbc7d4f5cdd3ce8f594a0c34da4da9ec84411f95afc96afc237c03a4e641006cf26c0a
   languageName: node
   linkType: hard
 

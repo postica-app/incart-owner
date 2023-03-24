@@ -36,7 +36,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.0.9"],\
           ["@vitejs/plugin-react", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:3.0.0"],\
           ["formik", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:2.2.9"],\
-          ["incart-fe-common", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/postica-app/incart-fe-common.git#commit=73feabdb1fbbc0b9dd2acdb3ff53d1ca6742dcec"],\
+          ["incart-fe-common", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/postica-app/incart-fe-common.git#commit=86825bdfaab25437c7af60f65f0025c73afa54c0"],\
           ["jotai", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:1.11.2"],\
           ["namisa", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd"],\
           ["react", "npm:18.2.0"],\
@@ -4818,17 +4818,17 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["incart-fe-common", [\
-      ["https://github.com/postica-app/incart-fe-common.git#commit=73feabdb1fbbc0b9dd2acdb3ff53d1ca6742dcec", {\
-        "packageLocation": "../../.yarn/berry/cache/incart-fe-common-https-378179f121-9.zip/node_modules/incart-fe-common/",\
+      ["https://github.com/postica-app/incart-fe-common.git#commit=86825bdfaab25437c7af60f65f0025c73afa54c0", {\
+        "packageLocation": "../../.yarn/berry/cache/incart-fe-common-https-7860875a24-9.zip/node_modules/incart-fe-common/",\
         "packageDependencies": [\
-          ["incart-fe-common", "https://github.com/postica-app/incart-fe-common.git#commit=73feabdb1fbbc0b9dd2acdb3ff53d1ca6742dcec"]\
+          ["incart-fe-common", "https://github.com/postica-app/incart-fe-common.git#commit=86825bdfaab25437c7af60f65f0025c73afa54c0"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/postica-app/incart-fe-common.git#commit=73feabdb1fbbc0b9dd2acdb3ff53d1ca6742dcec", {\
-        "packageLocation": "./.yarn/__virtual__/incart-fe-common-virtual-c70fe78fa6/3/.yarn/berry/cache/incart-fe-common-https-378179f121-9.zip/node_modules/incart-fe-common/",\
+      ["virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/postica-app/incart-fe-common.git#commit=86825bdfaab25437c7af60f65f0025c73afa54c0", {\
+        "packageLocation": "./.yarn/__virtual__/incart-fe-common-virtual-01539556d6/3/.yarn/berry/cache/incart-fe-common-https-7860875a24-9.zip/node_modules/incart-fe-common/",\
         "packageDependencies": [\
-          ["incart-fe-common", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/postica-app/incart-fe-common.git#commit=73feabdb1fbbc0b9dd2acdb3ff53d1ca6742dcec"],\
+          ["incart-fe-common", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/postica-app/incart-fe-common.git#commit=86825bdfaab25437c7af60f65f0025c73afa54c0"],\
           ["@haechi/flexile", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:1.4.7"],\
           ["@stitches/react", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:1.2.8"],\
           ["@types/formik", null],\
@@ -4837,7 +4837,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.0.9"],\
           ["@types/stitches__react", null],\
           ["formik", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:2.2.9"],\
-          ["namisa", "virtual:c70fe78fa67c7eb430aaf3fdc14f558c07e136b9c2c46f36bb8dd2b2bb8badd02a42b0b4792bc339c7b56736cab4e4d96514390b4e3c168f9f34b25e99c5fc49#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd"],\
+          ["namisa", "virtual:01539556d6009a03b97dfe826b1410b6956eb16f7737294b8b80005b753edf0b36a5896bda6e2cc1ed11c2b192aa4bb02b222c0c89134a9dd85b015b388990fd#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:18.2.0"]\
         ],\
@@ -4871,7 +4871,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.0.9"],\
           ["@vitejs/plugin-react", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:3.0.0"],\
           ["formik", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:2.2.9"],\
-          ["incart-fe-common", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/postica-app/incart-fe-common.git#commit=73feabdb1fbbc0b9dd2acdb3ff53d1ca6742dcec"],\
+          ["incart-fe-common", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/postica-app/incart-fe-common.git#commit=86825bdfaab25437c7af60f65f0025c73afa54c0"],\
           ["jotai", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:1.11.2"],\
           ["namisa", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd"],\
           ["react", "npm:18.2.0"],\
@@ -5958,18 +5958,18 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd", {\
-        "packageLocation": "./.yarn/__virtual__/namisa-virtual-bef43c7f1a/3/.yarn/berry/cache/namisa-https-962231ddab-9.zip/node_modules/namisa/",\
+      ["virtual:01539556d6009a03b97dfe826b1410b6956eb16f7737294b8b80005b753edf0b36a5896bda6e2cc1ed11c2b192aa4bb02b222c0c89134a9dd85b015b388990fd#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd", {\
+        "packageLocation": "./.yarn/__virtual__/namisa-virtual-2bf9ca4935/3/.yarn/berry/cache/namisa-https-962231ddab-9.zip/node_modules/namisa/",\
         "packageDependencies": [\
-          ["namisa", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd"],\
-          ["@mdx-js/rollup", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:2.2.1"],\
+          ["namisa", "virtual:01539556d6009a03b97dfe826b1410b6956eb16f7737294b8b80005b753edf0b36a5896bda6e2cc1ed11c2b192aa4bb02b222c0c89134a9dd85b015b388990fd#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd"],\
+          ["@mdx-js/rollup", null],\
           ["@types/mdx-js__rollup", null],\
           ["@types/react", "npm:18.0.26"],\
           ["@types/react-dom", "npm:18.0.9"],\
           ["@types/typescript", null],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:18.2.0"],\
-          ["typescript", "patch:typescript@npm%3A4.9.4#optional!builtin<compat/typescript>::version=4.9.4&hash=ad5954"]\
+          ["typescript", null]\
         ],\
         "packagePeers": [\
           "@mdx-js/rollup",\
@@ -5983,18 +5983,18 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["virtual:c70fe78fa67c7eb430aaf3fdc14f558c07e136b9c2c46f36bb8dd2b2bb8badd02a42b0b4792bc339c7b56736cab4e4d96514390b4e3c168f9f34b25e99c5fc49#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd", {\
-        "packageLocation": "./.yarn/__virtual__/namisa-virtual-4118dcf71a/3/.yarn/berry/cache/namisa-https-962231ddab-9.zip/node_modules/namisa/",\
+      ["virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd", {\
+        "packageLocation": "./.yarn/__virtual__/namisa-virtual-bef43c7f1a/3/.yarn/berry/cache/namisa-https-962231ddab-9.zip/node_modules/namisa/",\
         "packageDependencies": [\
-          ["namisa", "virtual:c70fe78fa67c7eb430aaf3fdc14f558c07e136b9c2c46f36bb8dd2b2bb8badd02a42b0b4792bc339c7b56736cab4e4d96514390b4e3c168f9f34b25e99c5fc49#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd"],\
-          ["@mdx-js/rollup", null],\
+          ["namisa", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#https://github.com/rycont/namisa.git#commit=316fc63339ec6052f1e488fca65816ac288a37cd"],\
+          ["@mdx-js/rollup", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:2.2.1"],\
           ["@types/mdx-js__rollup", null],\
           ["@types/react", "npm:18.0.26"],\
           ["@types/react-dom", "npm:18.0.9"],\
           ["@types/typescript", null],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:72305e6b050f332045343d0312d7442ce7de8a6a209eabce422e626bae1ae753ebeabda099c6ed4407a4bfdb01c2b0820b44916deb329b74b89e684ce508391d#npm:18.2.0"],\
-          ["typescript", null]\
+          ["typescript", "patch:typescript@npm%3A4.9.4#optional!builtin<compat/typescript>::version=4.9.4&hash=ad5954"]\
         ],\
         "packagePeers": [\
           "@mdx-js/rollup",\

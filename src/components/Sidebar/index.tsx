@@ -1,13 +1,14 @@
-import { ReactComponent as Storefront } from 'incart-fe-common/src/icons/Storefront.svg'
 import { ReactComponent as Logo } from 'incart-fe-common/src/brand/TextLogo.svg'
-import { ReactComponent as Person } from 'incart-fe-common/src/icons/Person.svg'
 import { Button, colors, Header1, Text1 } from 'incart-fe-common'
 import { Hexile, Vexile } from '@haechi/flexile'
 import { NavLink } from 'react-router-dom'
 import { ComponentProps } from 'react'
+import { User } from '@supabase/supabase-js'
 
-import { ICON_SIZE_24 } from '../../constants'
+import { supabase } from '@/supabase'
+import { router } from '@/main'
 import styles from './styles'
+import Parts from './Parts'
 
 // TODO: Replace these linkes with dynamic imports
 const PAGE_LINKS = [
@@ -51,9 +52,30 @@ const PAGE_LINKS = [
     },
 ]
 
+function getUserInfo() {
+    let user: User
+    const suspender = supabase.auth.getUser().then((u) => {
+        if (!u.error) {
+            user = u.data.user
+        } else {
+            router.navigate('/login')
+        }
+    })
+
+    return () => {
+        if (user) {
+            return user
+        }
+
+        throw suspender
+    }
+}
+
 export const Sidebar: React.FC<ComponentProps<typeof styles['Wrapper']>> = (
     props
 ) => {
+    const userGetter = getUserInfo()
+
     return (
         <styles.Wrapper gap={12} {...props}>
             <Logo
@@ -61,18 +83,7 @@ export const Sidebar: React.FC<ComponentProps<typeof styles['Wrapper']>> = (
                 color={colors.purple}
             />
             <Vexile gap={6}>
-                <Vexile gap={2}>
-                    <Hexile gap={1.5} y="center">
-                        <Person style={ICON_SIZE_24} />
-                        <Text1>
-                            <b>김선달</b> 사장님
-                        </Text1>
-                    </Hexile>
-                    <Hexile gap={1.5} y="center">
-                        <Storefront style={ICON_SIZE_24} />
-                        <Text1>봉이프레시</Text1>
-                    </Hexile>
-                </Vexile>
+                <Parts.UserInfo getUser={userGetter} />
                 <Button ghost>상점 정보 수정</Button>
             </Vexile>
             {PAGE_LINKS.map((group) => (

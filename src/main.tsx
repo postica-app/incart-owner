@@ -10,16 +10,18 @@ import React, { ComponentType, lazy, Suspense } from 'react'
 import { supabase } from './supabase'
 import { Modal } from './components'
 import Layout from './pages/layout'
-import "incart-fe-common/src/fonts/seed.css"
+import 'incart-fe-common/src/fonts/seed.css'
 import './App.css'
 
-declare global {
-    interface Window {
-        supabase: typeof supabase
-    }
-}
+// declare global {
+//     interface Window {
+//         supabase: typeof supabase
+//     }
+// }
 
-window.supabase = supabase
+// window.supabase = supabase
+
+export let router: ReturnType<typeof createBrowserRouter>
 
 const main = async () => {
     const loaders = Object.entries(import.meta.glob('/src/pages/**/loader.ts'))
@@ -60,7 +62,7 @@ const main = async () => {
         )
     )
 
-    const router = createBrowserRouter([
+    router = createBrowserRouter([
         { path: '/', element: <Layout />, children: pages },
     ])
 

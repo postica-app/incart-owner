@@ -1,8 +1,9 @@
 import { Vexile } from '@haechi/flexile'
 import { styled } from 'incart-fe-common'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 
 import { Sidebar } from '@/components'
+import { globalCss } from 'incart-fe-common/dist/stitches.config'
 
 const ContentWrapper = styled(Vexile, {
     margin: '18rem auto',
@@ -22,22 +23,29 @@ const BodyWrapper = styled('div', {
     },
 })
 
-export default () => (
-    <BodyWrapper>
-        <Sidebar
-            css={{
-                position: 'fixed',
-                left: '15rem',
-                top: '18rem',
-                '@tablet': {
-                    position: 'initial',
-                    left: 'unset',
-                    top: 'unset',
-                },
-            }}
-        />
-        <ContentWrapper gap={6}>
-            <Outlet />
-        </ContentWrapper>
-    </BodyWrapper>
-)
+export default () => {
+    const location = useLocation()
+    const showLayout = !location.pathname.startsWith('/login')
+
+    return showLayout ? (
+        <BodyWrapper>
+            <Sidebar
+                css={{
+                    position: 'fixed',
+                    left: '15rem',
+                    top: '18rem',
+                    '@tablet': {
+                        position: 'initial',
+                        left: 'unset',
+                        top: 'unset',
+                    },
+                }}
+            />
+            <ContentWrapper gap={6}>
+                <Outlet />
+            </ContentWrapper>
+        </BodyWrapper>
+    ) : (
+        <Outlet />
+    )
+}
