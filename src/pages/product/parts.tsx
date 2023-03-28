@@ -7,6 +7,7 @@ import { ReactComponent as Link } from '@/icons/link.svg'
 import { ListItem } from './styles'
 import { ICON_SIZE_24 } from '@/constants'
 import { Plink } from '@/components'
+import actions from './actions'
 
 export default {
     EmptyList: () => (
@@ -26,7 +27,14 @@ export default {
                         <Text2>{props.product.info}</Text2>
                     </Vexile>
                     <Hexile gap={3} x="right">
-                        <Code style={ICON_SIZE_24} />
+                        <Code
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                e.preventDefault()
+                                actions.copyEmbed(props.product.id)
+                            }}
+                            style={ICON_SIZE_24}
+                        />
                         <Link style={ICON_SIZE_24} />
                     </Hexile>
                 </ListItem.wrapper>
