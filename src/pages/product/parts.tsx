@@ -1,12 +1,12 @@
+import { ReactComponent as Code } from 'incart-fe-common/src/icons/Code.svg'
+import { ReactComponent as Link } from 'incart-fe-common/src/icons/Link.svg'
 import emptyHandImage from 'incart-fe-common/src/images/empty-hand.png'
 import { Header2, Text1, Text2 } from 'incart-fe-common'
-
 import { Hexile, Vexile } from '@haechi/flexile'
-import { ReactComponent as Code } from '@/icons/code.svg'
-import { ReactComponent as Link } from '@/icons/link.svg'
-import { ListItem } from './styles'
+
 import { ICON_SIZE_24 } from '@/constants'
 import { Plink } from '@/components'
+import { ListItem } from './styles'
 import actions from './actions'
 
 export default {
