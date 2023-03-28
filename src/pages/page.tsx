@@ -6,5 +6,5 @@ export default () => {
     useEffect(() => {
         goto('/product')
     }, [])
-    return <></>
+    return <>아니진짜요?</>
 }

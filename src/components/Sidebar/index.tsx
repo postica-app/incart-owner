@@ -2,7 +2,7 @@ import { ReactComponent as Logo } from 'incart-fe-common/src/brand/TextLogo.svg'
 import { Button, colors, Header1, Text1 } from 'incart-fe-common'
 import { Hexile, Vexile } from '@haechi/flexile'
 import { NavLink } from 'react-router-dom'
-import { ComponentProps } from 'react'
+import { ComponentProps, useEffect } from 'react'
 import { User } from '@supabase/supabase-js'
 
 import { supabase } from '@/supabase'
@@ -52,30 +52,9 @@ const PAGE_LINKS = [
     },
 ]
 
-function getUserInfo() {
-    let user: User
-    const suspender = supabase.auth.getUser().then((u) => {
-        if (!u.error) {
-            user = u.data.user
-        } else {
-            router.navigate('/login')
-        }
-    })
-
-    return () => {
-        if (user) {
-            return user
-        }
-
-        throw suspender
-    }
-}
-
 export const Sidebar: React.FC<ComponentProps<typeof styles['Wrapper']>> = (
     props
 ) => {
-    const userGetter = getUserInfo()
-
     return (
         <styles.Wrapper gap={12} {...props}>
             <Logo
@@ -83,7 +62,7 @@ export const Sidebar: React.FC<ComponentProps<typeof styles['Wrapper']>> = (
                 color={colors.purple}
             />
             <Vexile gap={6}>
-                <Parts.UserInfo getUser={userGetter} />
+                <Parts.UserInfo />
                 <Button ghost>상점 정보 수정</Button>
             </Vexile>
             {PAGE_LINKS.map((group) => (

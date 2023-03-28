@@ -23,8 +23,8 @@ export default () => {
         initialValues: {
             email: '',
         },
-        onSubmit(values) {
-            return actions.login(values.email)
+        async onSubmit(values) {
+            await actions.login(values.email)
         },
         validateOnBlur: true,
         validateOnChange: false,
