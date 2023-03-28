@@ -6,6 +6,7 @@ import { Breadcrumb, ControlGroup } from '@/components'
 import { Doc } from '@/types/utils'
 
 import { EditProductInfo } from './parts'
+import actions from '../actions'
 
 export default () => {
     const product = useLoaderData() as Doc<ProductType>
@@ -15,7 +16,15 @@ export default () => {
             <Breadcrumb customReadable={['상품', product.name]} />
             <Header1>구매창 미리보기</Header1>
             <ProductCard product={product} />
-            <Button icon={(props) => <Code {...props} />}>
+            <Button
+                icon={(props) => <Code {...props} />}
+                ghost
+                onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    actions.copyEmbed(product.id)
+                }}
+            >
                 임베드 복사하기
             </Button>
             <ControlGroup
