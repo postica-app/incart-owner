@@ -79,7 +79,7 @@ export default () => {
                             />
                         </Vexile>
                         <Button
-                            disabled={formik.isSubmitting}
+                            active={!formik.isSubmitting}
                             icon={(props) => <Arrow {...props} />}
                             type="submit"
                         >
