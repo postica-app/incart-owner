@@ -6,8 +6,9 @@ import styles from './styles'
 export const ControlGroup: React.FC<{
     children: ReactNode
     name: string
+    defaultOpened?: boolean
 }> = (props) => {
-    const [opened, setOpened] = useState(false)
+    const [opened, setOpened] = useState(!!props.defaultOpened)
 
     return (
         <styles.Wrapper
