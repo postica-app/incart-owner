@@ -7,6 +7,8 @@ const Wrapper = styled(Hexile, {
     bottom: '12rem',
     zIndex: 1,
     animated: true,
+    left: '50%',
+    transform: 'translateX(-50%)',
     '&>*': {
         animated: true,
     },
