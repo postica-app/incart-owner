@@ -64,8 +64,9 @@ export default () => {
                         />
                         <Vexile x="center" gap={1}>
                             <Text1>이메일을 입력해주세요</Text1>
-                            <Text2 grey5>
-                                이메일로 로그인 / 가입 링크를 보내드려요
+                            <Text2 grey5 center>
+                                이미 있는 계정이라면 로그인, 없다면 새로 가입할
+                                수 있는 링크를 이메일로 보내드려요
                             </Text2>
                         </Vexile>
                         <Vexile fillx>
