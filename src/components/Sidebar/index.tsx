@@ -1,12 +1,9 @@
 import { ReactComponent as Logo } from 'incart-fe-common/src/brand/TextLogo.svg'
 import { Button, colors, Header1, Text1 } from 'incart-fe-common'
 import { Hexile, Vexile } from '@haechi/flexile'
-import { NavLink } from 'react-router-dom'
-import { ComponentProps, useEffect } from 'react'
-import { User } from '@supabase/supabase-js'
+import { Link, NavLink } from 'react-router-dom'
+import { ComponentProps } from 'react'
 
-import { supabase } from '@/supabase'
-import { router } from '@/main'
 import styles from './styles'
 import Parts from './Parts'
 
@@ -57,10 +54,12 @@ export const Sidebar: React.FC<ComponentProps<typeof styles['Wrapper']>> = (
 ) => {
     return (
         <styles.Wrapper gap={12} {...props}>
-            <Logo
-                style={{ height: '7rem', width: '28rem' }}
-                color={colors.purple}
-            />
+            <Link to="/">
+                <Logo
+                    style={{ height: '7rem', width: '28rem' }}
+                    color={colors.purple}
+                />
+            </Link>
             <Vexile gap={6}>
                 <Parts.UserInfo />
                 <Button ghost>상점 정보 수정</Button>
