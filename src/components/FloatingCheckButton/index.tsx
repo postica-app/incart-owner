@@ -8,7 +8,6 @@ const Wrapper = styled(Hexile, {
     zIndex: 1,
     animated: true,
     left: '50%',
-    transform: 'translateX(-50%)',
     '&>*': {
         animated: true,
     },
@@ -16,7 +15,7 @@ const Wrapper = styled(Hexile, {
         visible: {
             true: {
                 visibility: 'visible',
-                transform: 'translateY(0px)',
+                transform: 'translateX(-50%) translateY(0px)',
                 opacity: 1,
                 '&>*': {
                     transform: 'scale(1)',
@@ -24,7 +23,7 @@ const Wrapper = styled(Hexile, {
             },
             false: {
                 visibility: 'hidden',
-                transform: 'translateY(6rem)',
+                transform: 'translateX(-50%) translateY(6rem)',
                 opacity: 0,
                 '&>*': {
                     transform: 'scale(0.9)',
