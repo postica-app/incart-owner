@@ -1,13 +1,13 @@
 import { ReactComponent as Storefront } from 'incart-fe-common/src/icons/Storefront.svg'
 import { ReactComponent as Person } from 'incart-fe-common/src/icons/Person.svg'
 import { Vexile, Hexile } from '@haechi/flexile'
-import { User } from '@supabase/supabase-js'
 import { useEffect, useState } from 'react'
 import { Text1 } from 'incart-fe-common'
 
 import { ICON_SIZE_24 } from '@/constants'
-import actions from './actions'
 import { router } from '@/main'
+
+import actions from './actions'
 
 export default {
     UserInfo() {
