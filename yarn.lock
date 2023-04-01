@@ -3261,7 +3261,7 @@ __metadata:
 
 "incart-fe-common@https://github.com/postica-app/incart-fe-common":
   version: 0.0.0
-  resolution: "incart-fe-common@https://github.com/postica-app/incart-fe-common.git#commit=4097fc10d69044496bd0b9763d7f488e75de5045"
+  resolution: "incart-fe-common@https://github.com/postica-app/incart-fe-common.git#commit=efb02d0615f0cd869cf8415bc7fc8b411e31a189"
   dependencies:
     "@haechi/flexile": "npm:^1.4.7"
     "@stitches/react": "npm:^1.2.8"
@@ -3275,7 +3275,7 @@ __metadata:
     formik: ^2.2.9
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: c29010031fe36b3fc3b55a0865fe497a47c1aa5da81d90c635fbce9eca77ffdb0c3e34fed353eb70b4ae4d46541139ced153ac7a83f682abd98fa95fa24b54ca
+  checksum: 8d07b166d66c8818deb058c50445bf473ab4165dd5a64e6471d4aad6a8be0b6944f8ced20b7492e55dc8bfea34d40e7958fa9235a916660c1c986e4778f593a3
   languageName: node
   linkType: hard
 
@@ -3305,6 +3305,7 @@ __metadata:
     typescript: "npm:^4.9.3"
     vite: "npm:^4.0.0"
     yup: "npm:^1.0.2"
+    zod: "npm:^3.21.4"
   languageName: unknown
   linkType: soft
 
@@ -5550,6 +5551,13 @@ __metadata:
     toposort: "npm:^2.0.2"
     type-fest: "npm:^2.19.0"
   checksum: 8835c92499477c6c9306887843390e21288b5c37cd5f0d4f7b052a23af653f6fbf72102cb385f39091f1050af2b9e6229d33982cf01b9447ec0b9ba9882a21ef
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.21.4":
+  version: 3.21.4
+  resolution: "zod@npm:3.21.4"
+  checksum: f25f384f380c49d05a11541093a8d26f07688aa39f6a8adbd6dc338b43f63617bf138734fb1b79800ba374523f6a1bb561f7d401b3cc051fed2715eae5577d0a
   languageName: node
   linkType: hard
 
