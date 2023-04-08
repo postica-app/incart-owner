@@ -26,7 +26,7 @@ export default {
 
         let query = supabase
             .from('order_sheet')
-            .select('id,orderer_name,shipping_info,status')
+            .select('rid,id,orderer_name,shipping_info,status')
             .gte('created_at', filter.range_start)
             .lte('created_at', filter.range_end)
 
