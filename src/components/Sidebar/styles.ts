@@ -4,6 +4,7 @@ import { styled } from 'incart-fe-common'
 export default {
     Wrapper: styled(Vexile, {
         width: '60rem',
+        flexShrink: 0,
     }),
     NavSection: styled('div', {
         padding: '3rem',

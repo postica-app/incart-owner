@@ -12,19 +12,19 @@ import { Modal } from './components'
 import Layout from './pages/layout'
 import 'incart-fe-common/src/fonts/seed.css'
 import './App.css'
-
-// declare global {
-//     interface Window {
-//         supabase: typeof supabase
-//     }
-// }
-
-// window.supabase = supabase
+import { PageConfig } from './types'
 
 export let router: ReturnType<typeof createBrowserRouter>
 
 const main = async () => {
-    const loaders = Object.entries(import.meta.glob('/src/pages/**/loader.ts'))
+    const loaderPaths = Object.entries(
+        import.meta.glob('/src/pages/**/loader.ts')
+    )
+    const configPaths = Object.entries(
+        import.meta.glob('/src/pages/**/config.ts')
+    )
+
+    const configs: Record<string, PageConfig> = {}
 
     const pages = await Promise.all(
         Object.entries(import.meta.glob('/src/pages/**/page.tsx')).map(
@@ -33,11 +33,25 @@ const main = async () => {
                     () => importPage() as Promise<{ default: ComponentType }>
                 )
 
-                let loader = loaders.find(
+                const loader = loaderPaths.find(
                     ([loaderPath]) =>
                         loaderPath.split('/').slice(0, -1).join('/') ==
                         pagePath.split('/').slice(0, -1).join('/')
                 )
+
+                const config = configPaths.find(
+                    ([configPath]) =>
+                        configPath.split('/').slice(0, -1).join('/') ==
+                        pagePath.split('/').slice(0, -1).join('/')
+                )
+
+                if (config) {
+                    const { default: fetchedConfig } = (await config[1]()) as {
+                        default: PageConfig
+                    }
+                    configs[pagePath.split('/').slice(3, -1).join('/')] =
+                        fetchedConfig
+                }
 
                 return {
                     path: pagePath
@@ -63,7 +77,7 @@ const main = async () => {
     )
 
     router = createBrowserRouter([
-        { path: '/', element: <Layout />, children: pages },
+        { path: '/', element: <Layout configs={configs} />, children: pages },
     ])
 
     ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
