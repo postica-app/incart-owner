@@ -19,12 +19,10 @@ const columns: GridOptions['columns'] = [
     {
         name: 'rid',
         header: '주문 번호',
-        sortable: true,
     },
     {
         name: 'orderer_name',
         header: '주문자',
-        sortable: true,
     },
     {
         name: 'products',
@@ -37,7 +35,6 @@ const columns: GridOptions['columns'] = [
     {
         name: 'status',
         header: '상태',
-        sortable: true,
     },
 ]
 
@@ -108,6 +105,7 @@ export default () => {
                                 data={value}
                                 columns={columns}
                                 scrollX={true}
+                                scrollY={true}
                                 header={{
                                     align: 'left',
                                 }}

@@ -76,7 +76,7 @@ export default {
             )
         }
 
-        type OrderItemType = typeof orderItems[number] & {
+        type OrderItemType = (typeof orderItems)[number] & {
             product: ProductType
             selected_options: string[]
         }
