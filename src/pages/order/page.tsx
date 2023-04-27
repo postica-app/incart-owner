@@ -47,7 +47,9 @@ const transformData = (
             rid: order.rid,
             orderer_name: order.orderer_name,
             shipping_info: shippingInfo.address
-                ? shippingInfo.address.roadname + shippingInfo.address.detail
+                ? `(${shippingInfo.method}) ` +
+                  shippingInfo.address.roadname +
+                  shippingInfo.address.detail
                 : shippingInfo.message || shippingInfo.method,
             status: {
                 created: '접수 됨',
