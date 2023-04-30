@@ -1,11 +1,20 @@
-import { Header1, ShippingInfoType } from 'incart-fe-common'
-import { useSearchParams } from 'react-router-dom'
+import {
+    Header1,
+    OrderStage,
+    ORDER_STAGE_MAP,
+    ShippingInfoType,
+} from 'incart-fe-common'
 import GridConfig, { GridOptions } from 'tui-grid'
+import { useEffect, useMemo } from 'react'
+import { Hexile } from '@haechi/flexile'
 import Grid from '@toast-ui/react-grid'
 import 'tui-grid/dist/tui-grid.css'
+import { toast } from '@/functions'
+import { useAwait } from '@/hooks'
+
 import actions from './actions'
-import { useAsyncValue } from '@/hooks'
-import { Maximizer } from '@/components'
+import styles from './styles'
+import parts from './parts'
 
 GridConfig.applyTheme('clean', {
     cell: {
@@ -33,7 +42,7 @@ const columns: GridOptions['columns'] = [
         header: '배송 정보',
     },
     {
-        name: 'status',
+        name: 'stage',
         header: '상태',
     },
 ]
@@ -51,12 +60,7 @@ const transformData = (
                   shippingInfo.address.roadname +
                   shippingInfo.address.detail
                 : shippingInfo.message || shippingInfo.method,
-            status: {
-                created: '접수 됨',
-                paid: '결제 완료',
-                departed: '배송 출발함',
-                canceled: '취소',
-            }[order.status],
+            stage: ORDER_STAGE_MAP[order.stage as OrderStage],
             products: order.items
                 .map(
                     (item) =>
@@ -72,53 +76,49 @@ const transformData = (
 }
 
 export default () => {
-    const [params, setSearchParams] = useSearchParams({
-        range_start: new Date(new Date().getTime() - 70 * 24 * 60 * 60 * 1000)
-            .toISOString()
-            .substring(0, 10),
-        range_end: new Date().toISOString().substring(0, 10),
-    })
+    const [filter, filterView] = parts.useFilter()
 
-    const { value, loading, error } = useAsyncValue(
-        () =>
-            actions
-                .getOrdersWithFilter(
-                    Object.fromEntries([...params.entries()]) as unknown
-                )
-                .then(transformData),
-        [params]
+    const valuePromise = useMemo(
+        () => actions.getOrdersWithFilter(filter).then(transformData),
+        [filter]
     )
+
+    const { value, loading, error } = useAwait(valuePromise)
+
+    useEffect(() => {
+        if (error) {
+            toast('주문 내역을 가져오는 데 오류가 발생했습니다', '😢')
+        }
+    }, [error])
 
     return (
         <>
             <Header1>주문 내역</Header1>
-            <Maximizer
-                style={{
-                    border: '1px solid #eee',
-                    borderRadius: '2rem',
-                }}
-            >
-                {(size) => (
-                    <>
-                        {value ? (
-                            <Grid
-                                bodyHeight={size.height - 50}
-                                width={Math.max(size.width, 1000)}
-                                data={value}
-                                columns={columns}
-                                scrollX={true}
-                                scrollY={true}
-                                header={{
-                                    align: 'left',
-                                }}
-                                keyColumnName="rid"
-                            />
-                        ) : (
-                            <>아니</>
-                        )}
-                    </>
-                )}
-            </Maximizer>
+            <Hexile fillx filly gap={10}>
+                <styles.GridWrapper loading={loading}>
+                    {(size) => (
+                        <>
+                            {value ? (
+                                <Grid
+                                    bodyHeight={size.height - 50}
+                                    width={Math.max(size.width, 1000)}
+                                    data={value}
+                                    columns={columns}
+                                    scrollX={true}
+                                    scrollY={true}
+                                    header={{
+                                        align: 'left',
+                                    }}
+                                    keyColumnName="rid"
+                                />
+                            ) : (
+                                <>아니</>
+                            )}
+                        </>
+                    )}
+                </styles.GridWrapper>
+                {filterView}
+            </Hexile>
         </>
     )
 }
