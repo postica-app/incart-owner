@@ -1,2 +1,2 @@
-export * from './useAsyncValue'
+export * from './useAwait'
 export * from './useModal'
