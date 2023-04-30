@@ -49,7 +49,7 @@ export interface Database {
           receiver_phone: string
           rid: string | null
           shipping_info: Json
-          status: string
+          stage: string
           store_rid: number
         }
         Insert: {
@@ -62,7 +62,7 @@ export interface Database {
           receiver_phone: string
           rid?: string | null
           shipping_info: Json
-          status?: string
+          stage?: string
           store_rid: number
         }
         Update: {
@@ -75,7 +75,7 @@ export interface Database {
           receiver_phone?: string
           rid?: string | null
           shipping_info?: Json
-          status?: string
+          stage?: string
           store_rid?: number
         }
       }
