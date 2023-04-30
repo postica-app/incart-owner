@@ -1,9 +1,13 @@
+import { router } from '@/main'
 import { supabase } from '@/supabase'
 
 export default {
     async getOwner() {
         const user = await supabase.auth.getUser()
-        if (!user.data.user?.id) throw new Error('No user found')
+        if (!user.data.user?.id) {
+            router.navigate('/login')
+            throw new Error('No user found')
+        }
 
         const { data: ownerData, error: ownerError } = await supabase
             .from('owner')
@@ -11,8 +15,14 @@ export default {
             .eq('id', user.data.user.id)
             .limit(1)
 
-        if (ownerError) throw ownerError
-        if (!ownerData[0].id) throw new Error('No owner found')
+        if (ownerError) {
+            router.navigate('/setup/owner')
+            throw ownerError
+        }
+        if (!ownerData[0]?.id) {
+            router.navigate('/setup/owner')
+            throw new Error('User found but No owner found')
+        }
 
         const { data: storeData, error: storeError } = await supabase
             .from('store')
@@ -20,7 +30,10 @@ export default {
             .eq('owner_id', ownerData[0].id)
             .limit(1)
 
-        if (storeError) throw storeError
+        if (storeError) {
+            router.navigate('/setup/store')
+            throw storeError
+        }
         if (!storeData[0].rid) throw new Error('No store found')
 
         return {

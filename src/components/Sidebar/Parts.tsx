@@ -12,17 +12,11 @@ import actions from './actions'
 export default {
     UserInfo() {
         const [user, setUser] = useState<Awaited<
-            ReturnType<typeof actions['getOwner']>
+            ReturnType<(typeof actions)['getOwner']>
         > | null>(null)
 
         useEffect(() => {
-            actions
-                .getOwner()
-                .then(setUser)
-                .catch((e) => {
-                    console.error(e)
-                    router.navigate('/login')
-                })
+            actions.getOwner().then(setUser)
         }, [])
 
         return (
