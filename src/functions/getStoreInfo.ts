@@ -1,8 +1,7 @@
-import { supabase } from '@/supabase'
-import { Doc } from '@/types/utils'
 import { StoreType } from 'incart-fe-common'
-import { memo } from './memo'
+import { supabase } from '@/supabase'
 import { toast } from './toast'
+import { memo } from './memo'
 
 export const storeInfo = memo('storeInfo', 1000 * 60 * 60, async () => {
     const store = await supabase.from('store').select()
