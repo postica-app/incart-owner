@@ -131,26 +131,26 @@ export interface Database {
       store: {
         Row: {
           created_at: string | null
+          id: number
           name: string
           owner_id: string
-          payment_receive_account: Json
-          rid: number
+          payment_receive_account: Json | null
           shipping_method: Json
         }
         Insert: {
           created_at?: string | null
+          id?: number
           name: string
           owner_id: string
-          payment_receive_account: Json
-          rid?: number
+          payment_receive_account?: Json | null
           shipping_method?: Json
         }
         Update: {
           created_at?: string | null
+          id?: number
           name?: string
           owner_id?: string
-          payment_receive_account?: Json
-          rid?: number
+          payment_receive_account?: Json | null
           shipping_method?: Json
         }
       }

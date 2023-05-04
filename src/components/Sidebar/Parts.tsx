@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react'
 import { Text1 } from 'incart-fe-common'
 
 import { ICON_SIZE_24 } from '@/constants'
-import { router } from '@/main'
-
 import actions from './actions'
 
 export default {

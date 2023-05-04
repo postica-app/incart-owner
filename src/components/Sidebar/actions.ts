@@ -34,7 +34,11 @@ export default {
             router.navigate('/setup/store')
             throw storeError
         }
-        if (!storeData[0].rid) throw new Error('No store found')
+
+        if (!storeData[0]?.id) {
+            router.navigate('/setup/store')
+            throw new Error('No store found')
+        }
 
         return {
             user,

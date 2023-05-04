@@ -7,7 +7,7 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
-        "pull-scheme": "npx supabase gen types typescript --project-id daxrvmzwgfifuornneda --schema public > src/types/gen.ts"
+        "pull-scheme": "npx supabase gen types typescript --project-id 'daxrvmzwgfifuornneda' --schema public > src/types/gen.ts"
     },
     "dependencies": {
         "@haechi/flexile": "^1.4.7",
