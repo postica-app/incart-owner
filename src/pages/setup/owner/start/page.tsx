@@ -13,8 +13,8 @@ export default () => {
             placeholder="김선달"
             button={{
                 submitText: '출발!',
-                icon: (props) => <Email {...props} />,
             }}
+            inputIcon={(props) => <Email {...props} />}
             onSubmit={() => {
                 router.navigate('/setup/owner/name')
             }}

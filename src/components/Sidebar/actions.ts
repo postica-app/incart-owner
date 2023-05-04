@@ -35,7 +35,7 @@ export default {
             throw storeError
         }
 
-        if (!storeData[0]?.id) {
+        if (!storeData[0]?.rid) {
             router.navigate('/setup/store')
             throw new Error('No store found')
         }

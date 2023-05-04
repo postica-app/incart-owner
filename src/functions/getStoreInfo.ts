@@ -11,5 +11,5 @@ export const storeInfo = memo('storeInfo', 1000 * 60 * 60, async () => {
         throw new Error('Cannot fetch store data')
     }
 
-    return store.data[0] as Doc<StoreType>
+    return store.data[0] as unknown as StoreType
 })

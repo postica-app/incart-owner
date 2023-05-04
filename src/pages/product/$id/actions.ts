@@ -6,7 +6,17 @@ export default {
     async updateProduct(product: Doc<ProductType>) {
         const result = await supabase
             .from('product')
-            .update(product)
+            .update({
+                ...product,
+                options: product.options.map((option) => ({
+                    ...option,
+                    items: option.items.map((item) => ({
+                        ...(item.info && { info: item.info }),
+                        ...(item.priceDelta && { price: item.priceDelta }),
+                        name: item.name,
+                    })),
+                })),
+            })
             .eq('id', product.id)
             .select()
 
@@ -14,7 +24,7 @@ export default {
 
         return result.data
     },
-    async getProductById(id: string): Promise<Doc<ProductType>> {
+    async getProductById(id: string) {
         const result = await supabase
             .from('product')
             .select('*')
@@ -22,6 +32,6 @@ export default {
 
         if (result.error) throw result.error
 
-        return result.data[0]
+        return result.data[0] as unknown as Doc<ProductType>
     },
 }
