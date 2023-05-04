@@ -4,8 +4,8 @@ import * as yup from 'yup'
 import { SingleInputPage } from '@/components'
 import { router } from '@/main'
 import actions from './actions'
-import { toast } from 'react-hot-toast'
 import { useEffect } from 'react'
+import { toast } from '@/functions'
 
 export default () => {
     useEffect(() => {
@@ -27,15 +27,15 @@ export default () => {
             onSubmit={async (name) => {
                 try {
                     await actions.createOwner(name)
-                    toast.success('멋진 이름이네요 😍')
+                    toast('멋진 이름이네요', '😍')
                     router.navigate('/setup/store')
                 } catch (e) {
                     if (typeof e === 'string') {
-                        toast.error(e)
+                        toast(e, '😥')
                     } else if (typeof (e as Error).message === 'string') {
-                        toast.error((e as Error).message)
+                        toast((e as Error).message, '😥')
                     } else if ((e as Error).toString) {
-                        toast.error((e as Error).toString())
+                        toast((e as Error).toString(), '😥')
                     }
                 }
             }}

@@ -27,7 +27,7 @@ export default {
         </ListItem.wrapper>
     ),
     ProductListItem: (props: {
-        product: { name: string; info?: string; id: string }
+        product: { name: string; info?: string | null; id: string }
     }) => {
         return (
             <Plink animation to={props.product.id}>

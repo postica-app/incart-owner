@@ -1,3 +1,5 @@
+import React, { ComponentType, lazy, Suspense } from 'react'
+import 'incart-fe-common/src/fonts/seed.css'
 import {
     createBrowserRouter,
     LoaderFunction,
@@ -5,14 +7,11 @@ import {
 } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import ReactDOM from 'react-dom/client'
-import React, { ComponentType, lazy, Suspense } from 'react'
 
-import { supabase } from './supabase'
+import { PageConfig } from './types'
 import { Modal } from './components'
 import Layout from './pages/layout'
-import 'incart-fe-common/src/fonts/seed.css'
 import './App.css'
-import { PageConfig } from './types'
 
 export let router: ReturnType<typeof createBrowserRouter>
 

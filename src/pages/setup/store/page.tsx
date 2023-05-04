@@ -1,10 +1,10 @@
-import toast from 'react-hot-toast'
+import { useEffect } from 'react'
 import * as yup from 'yup'
 
 import { SingleInputPage } from '@/components'
+import { toast } from '@/functions'
 import { router } from '@/main'
 import actions from './actions'
-import { useEffect } from 'react'
 
 export default () => {
     useEffect(() => {
@@ -30,15 +30,15 @@ export default () => {
             onSubmit={async (name) => {
                 try {
                     await actions.createStore(name)
-                    toast.success('쇼핑몰이 생성되었습니다')
+                    toast('쇼핑몰이 생성되었습니다', '😍')
                     router.navigate('/')
                 } catch (e) {
                     if (typeof e === 'string') {
-                        toast.error(e)
+                        toast(e, '😥')
                     } else if (typeof (e as Error).message === 'string') {
-                        toast.error((e as Error).message)
+                        toast((e as Error).message, '😥')
                     } else if ((e as Error).toString) {
-                        toast.error((e as Error).toString())
+                        toast((e as Error).toString(), '😥')
                     }
                 }
             }}
