@@ -15,6 +15,7 @@ import { useFormik } from 'formik'
 import { FOptionListEditer, Breadcrumb } from '@/components'
 
 import actions from './actions'
+import { toast } from '@/functions'
 
 export default () => {
     const [productOptionUsage, _, __, Switch] = useSwitch({
@@ -43,19 +44,23 @@ export default () => {
             options: [],
         },
         onSubmit: async (values) => {
-            const result = await actions.createNewProduct({
-                name: values.name!,
-                price: values.price!,
-                options: values.options
-                    ? [
-                          {
-                              name: values.optionName!,
-                              items: values.options,
-                          },
-                      ]
-                    : [],
-            })
-            goto('/product/' + result.id)
+            try {
+                const result = await actions.createNewProduct({
+                    name: values.name!,
+                    price: values.price!,
+                    options: values.options
+                        ? [
+                              {
+                                  name: values.optionName!,
+                                  items: values.options,
+                              },
+                          ]
+                        : [],
+                })
+                goto('/product/' + result.id)
+            } catch (e) {
+                toast('🚨', '상품을 만들지 못했습니다. 다시 시도해주세요')
+            }
         },
         validateOnChange: false,
         validate(values) {
