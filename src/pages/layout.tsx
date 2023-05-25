@@ -5,10 +5,18 @@ import { Vexile } from '@haechi/flexile'
 import { Sidebar } from '@/components'
 import { PageConfig } from '@/types'
 
+const BodyWrapper = styled('div', {
+    height: '100%',
+    boxSizing: 'border-box',
+    display: 'flex',
+    padding: '15rem 12rem',
+    gap: '8rem',
+})
+
 const ContentWrapper = styled(Vexile, {
     margin: '0rem auto',
     maxWidth: '180rem',
-    position: 'fixed',
+    position: 'absolute',
     left: 0,
     right: 0,
     '@tablet': {
@@ -27,26 +35,6 @@ const ContentWrapper = styled(Vexile, {
             },
         },
     },
-})
-
-const BodyWrapper = styled('div', {
-    // '@tablet': {
-    //     display: 'flex',
-    //     padding: '15rem 12rem',
-    //     gap: '8rem',
-    // },
-    height: '100%',
-    boxSizing: 'border-box',
-    display: 'flex',
-    padding: '15rem 12rem',
-    gap: '8rem',
-    // variants: {
-    //     wide: {
-    //         true: {
-    //             display: 'flex',
-    //         },
-    //     },
-    // },
 })
 
 export default (props: { configs: Record<string, PageConfig | null> }) => {
