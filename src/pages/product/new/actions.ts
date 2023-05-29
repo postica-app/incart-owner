@@ -1,6 +1,6 @@
 import { ProductType } from 'incart-fe-common'
 
-import { storeInfo } from '@/functions/getStoreInfo'
+import { getStoreInfo } from '@/functions/getStoreInfo'
 import { supabase } from '@/supabase'
 import { Doc } from '@/types/utils'
 
@@ -10,7 +10,7 @@ export default {
             .from('product')
             .insert({
                 ...product,
-                store_rid: (await storeInfo()).rid,
+                store_rid: (await getStoreInfo()).rid,
                 options: product.options.map((option) => ({
                     ...option,
                     items: option.items.map((item) => ({

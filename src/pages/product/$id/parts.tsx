@@ -58,7 +58,7 @@ export const EditProductInfo: React.FC<{
                     visible={formik.dirty}
                     ghost={{
                         icon: (props) => <Refresh {...props} />,
-                        children: '기본 설정으로 되돌리기',
+                        children: '원래대로 되돌리기',
                         active: !formik.isSubmitting,
                         onClick() {
                             location.reload()

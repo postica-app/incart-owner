@@ -16,18 +16,17 @@ function parseCachedValue(cache: string | null) {
     }
 }
 
-export const memo =
-    <Args extends [], ReturnValue>(
-        key: string,
-        duration: number,
-        action: (...arg: Args) => ReturnValue
-    ) =>
-    async (...params: Args): Promise<ReturnValue> => {
+export const memo = <Args extends [], ReturnValue>(
+    key: string,
+    duration: number,
+    action: (...arg: Args) => ReturnValue
+) => {
+    const func = async (...arg: Args): Promise<ReturnValue> => {
         try {
             const cachedValue = parseCachedValue(localStorage.getItem(key))
             return cachedValue as ReturnValue
         } catch (e) {
-            let result = action(...params)
+            let result = action(...arg)
 
             if (result instanceof Promise) {
                 result = await result
@@ -44,3 +43,24 @@ export const memo =
             return result
         }
     }
+
+    func.ignoreCache = async (...arg: Args): Promise<ReturnValue> => {
+        const result = action(...arg)
+
+        if (result instanceof Promise) {
+            return await result
+        }
+
+        localStorage.setItem(
+            key,
+            JSON.stringify({
+                expiresAt: duration + +new Date(),
+                data: result,
+            })
+        )
+
+        return result
+    }
+
+    return func
+}

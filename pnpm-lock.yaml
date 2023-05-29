@@ -21,7 +21,7 @@ dependencies:
     version: 2.2.9(react@18.2.0)
   incart-fe-common:
     specifier: github:postica-app/incart-fe-common
-    version: github.com/postica-app/incart-fe-common/6b3997cea5f6db4616f657e1f5a57e5b60e2dafc(@haechi/flexile@1.4.7)(@mdx-js/rollup@2.1.5)(@stitches/react@1.2.8)(formik@2.2.9)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.3)
+    version: github.com/postica-app/incart-fe-common/c230205cbb92c9d0ef9ad2d4a52d279a97ef0a15(@haechi/flexile@1.4.7)(@mdx-js/rollup@2.1.5)(@stitches/react@1.2.8)(formik@2.2.9)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.3)
   jotai:
     specifier: ^1.11.2
     version: 1.11.2(@babel/core@7.21.8)(react@18.2.0)
@@ -3671,9 +3671,9 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
-  github.com/postica-app/incart-fe-common/6b3997cea5f6db4616f657e1f5a57e5b60e2dafc(@haechi/flexile@1.4.7)(@mdx-js/rollup@2.1.5)(@stitches/react@1.2.8)(formik@2.2.9)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.3):
-    resolution: {tarball: https://codeload.github.com/postica-app/incart-fe-common/tar.gz/6b3997cea5f6db4616f657e1f5a57e5b60e2dafc}
-    id: github.com/postica-app/incart-fe-common/6b3997cea5f6db4616f657e1f5a57e5b60e2dafc
+  github.com/postica-app/incart-fe-common/c230205cbb92c9d0ef9ad2d4a52d279a97ef0a15(@haechi/flexile@1.4.7)(@mdx-js/rollup@2.1.5)(@stitches/react@1.2.8)(formik@2.2.9)(react-dom@18.2.0)(react@18.2.0)(typescript@4.9.3):
+    resolution: {tarball: https://codeload.github.com/postica-app/incart-fe-common/tar.gz/c230205cbb92c9d0ef9ad2d4a52d279a97ef0a15}
+    id: github.com/postica-app/incart-fe-common/c230205cbb92c9d0ef9ad2d4a52d279a97ef0a15
     name: incart-fe-common
     version: 0.0.0
     peerDependencies:

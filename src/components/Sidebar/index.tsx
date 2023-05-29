@@ -20,36 +20,20 @@ const PAGE_LINKS = [
                 name: '주문 내역',
                 link: '/order',
             },
-            {
-                name: '여러번 주문한 손님',
-                link: '/regular-customer',
-            },
         ],
     },
     {
         groupName: '운영',
         items: [
             {
-                name: '통계',
-                link: '/chart',
-            },
-            {
-                name: '상점 공지',
-                link: '/store-notice',
-            },
-            {
-                name: '결제 수단',
-                link: '/payment-method',
-            },
-            {
-                name: '테마',
-                link: '/appearance',
+                name: '상품 수령 방법 (배송)',
+                link: '/shipping',
             },
         ],
     },
 ]
 
-export const Sidebar: React.FC<ComponentProps<typeof styles['Wrapper']>> = (
+export const Sidebar: React.FC<ComponentProps<(typeof styles)['Wrapper']>> = (
     props
 ) => {
     return (
