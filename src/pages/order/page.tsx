@@ -15,7 +15,7 @@ import { useAwait } from '@/hooks'
 import actions from './actions'
 import styles from './styles'
 import parts from './parts'
-import { useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 let Grid = _Grid
 
@@ -117,6 +117,7 @@ export default () => {
 
     return (
         <>
+            <Outlet />
             <Header1>주문 내역</Header1>
             <Hexile fillx filly gap={10}>
                 <styles.GridWrapper loading={loading}>
