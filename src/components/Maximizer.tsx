@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 export const Maximizer: React.FC<
     Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> & {
@@ -31,6 +31,11 @@ export const Maximizer: React.FC<
         }
     }, [ref.current])
 
+    const content = useMemo(() => {
+        if (!height || !width) return <></>
+        return children({ height, width })
+    }, [height, width, children])
+
     return (
         <div
             {...props}
@@ -47,12 +52,7 @@ export const Maximizer: React.FC<
                     position: 'absolute',
                 }}
             >
-                {height
-                    ? children({
-                          height,
-                          width,
-                      })
-                    : null}
+                {content}
             </div>
         </div>
     )

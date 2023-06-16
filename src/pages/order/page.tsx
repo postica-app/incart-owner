@@ -7,7 +7,7 @@ import {
 import GridConfig, { GridOptions } from 'tui-grid'
 import { useEffect, useMemo } from 'react'
 import { Hexile } from '@haechi/flexile'
-import Grid from '@toast-ui/react-grid'
+import _Grid from '@toast-ui/react-grid'
 import 'tui-grid/dist/tui-grid.css'
 import { toast } from '@/functions'
 import { useAwait } from '@/hooks'
@@ -15,6 +15,14 @@ import { useAwait } from '@/hooks'
 import actions from './actions'
 import styles from './styles'
 import parts from './parts'
+
+let Grid = _Grid
+
+if ('default' in Grid) {
+    Grid = Grid['default'] as typeof _Grid
+    // WTF is this
+    // IDK why but this is needed to make it work
+}
 
 GridConfig.applyTheme('clean', {
     cell: {
