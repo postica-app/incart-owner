@@ -82,7 +82,7 @@ const main = async () => {
                             }
                         ).default,
                     children: [],
-                    config: fetchedConfig,
+                    handle: { config: fetchedConfig },
                 }
             }
         )
@@ -91,7 +91,7 @@ const main = async () => {
     flatPages = flatPages.sort((a, b) => a.path.length - b.path.length)
 
     const nestedPages: RouteObject = {
-        element: <Layout configs={configs} />,
+        element: <Layout />,
         children: [],
         path: '/',
     }

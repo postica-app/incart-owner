@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useMatches } from 'react-router-dom'
 import { styled } from 'incart-fe-common'
 import { Vexile } from '@haechi/flexile'
 
@@ -37,9 +37,10 @@ const ContentWrapper = styled(Vexile, {
     },
 })
 
-export default (props: { configs: Record<string, PageConfig | null> }) => {
-    const location = useLocation()
-    const config = props.configs[location.pathname.slice(1)]
+export default () => {
+    const match = useMatches()
+    const handle = match.slice(-1)[0].handle as { config: PageConfig }
+    const config = handle?.config as PageConfig
 
     return config?.hideLayout ? (
         <Outlet />
@@ -47,14 +48,9 @@ export default (props: { configs: Record<string, PageConfig | null> }) => {
         <BodyWrapper>
             <Sidebar
                 css={{
-                    // position: 'fixed',
-                    // left: '15rem',
-                    // top: '18rem',
-                    // '@tablet': {
                     position: 'initial',
                     left: 'unset',
                     top: 'unset',
-                    // },
                 }}
             />
             <ContentWrapper gap={6} wide={config?.wide}>
