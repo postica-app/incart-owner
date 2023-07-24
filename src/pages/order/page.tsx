@@ -10,12 +10,14 @@ import { Hexile } from '@haechi/flexile'
 import _Grid, { Props } from '@toast-ui/react-grid'
 import 'tui-grid/dist/tui-grid.css'
 import { toast } from '@/functions'
-import { useAwait } from '@/hooks'
+import { useAwait, useModal } from '@/hooks'
 
 import actions from './actions'
 import styles from './styles'
 import parts from './parts'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate, useSearchParams } from 'react-router-dom'
+import { useSetAtom } from 'jotai'
+import { modalContentAtom } from '@/jotai'
 
 let Grid = _Grid
 
@@ -92,14 +94,19 @@ const transformData = (
     })
 }
 
+export const MODAL_KEY = 'detail'
+
 export default () => {
-    const [filter, filterView] = parts.useFilter()
+    const [searchParams, setSearchParams] = useSearchParams()
+    const openModal = useModal()
+
+    const [filter, filterView] = actions.useFilter()
     const valuePromise = useMemo(
-        () => actions.getOrdersWithFilter(filter).then(transformData),
+        () => actions.getOrdersWithFilter(filter),
         [filter]
     )
-    const { value, loading, error } = useAwait(valuePromise)
-    const goto = useNavigate()
+    const { value: rawOrders, loading, error } = useAwait(valuePromise)
+    const ordersForTable = rawOrders && transformData(rawOrders)
 
     useEffect(() => {
         if (error) {
@@ -107,12 +114,43 @@ export default () => {
         }
     }, [error])
 
+    useEffect(() => {
+        const detailModalRid = searchParams.get(MODAL_KEY)
+        if (!detailModalRid || !rawOrders) return
+
+        const orderSheet = rawOrders.find(
+            (order) => order.rid === detailModalRid
+        )
+
+        if (!orderSheet) {
+            toast('일치하는 주문 내역을 찾을 수 없습니다', '🚨')
+
+            setSearchParams((prev) => {
+                prev.delete('detail')
+                return prev
+            })
+            return
+        }
+
+        const closeModal = openModal(
+            <parts.OrderSheetModal
+                orderSheet={orderSheet}
+                onClose={() => {
+                    closeModal()
+                }}
+            />
+        )
+    }, [searchParams, rawOrders])
+
     const openOrderSheet = ((e) => {
         if (!('rowKey' in e) || typeof e.rowKey !== 'number') return
         const pseudoRid = e.rowKey
         const rid = pseudoRid.toString().replace('.', '-')
 
-        goto(`/order/${rid}`)
+        setSearchParams((prev) => ({
+            ...Object.fromEntries(prev.entries()),
+            [MODAL_KEY]: rid,
+        }))
     }) satisfies Props['onClick']
 
     return (
@@ -123,11 +161,11 @@ export default () => {
                 <styles.GridWrapper loading={loading}>
                     {(size) => (
                         <>
-                            {value ? (
+                            {ordersForTable ? (
                                 <Grid
                                     bodyHeight={size.height - 50}
                                     width={Math.max(size.width, 1000)}
-                                    data={value}
+                                    data={ordersForTable}
                                     columns={columns}
                                     scrollX={true}
                                     scrollY={true}

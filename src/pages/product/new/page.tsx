@@ -59,7 +59,7 @@ export default () => {
                 })
                 goto('/product/' + result.id)
             } catch (e) {
-                toast('🚨', '상품을 만들지 못했습니다. 다시 시도해주세요')
+                toast('상품을 만들지 못했습니다. 다시 시도해주세요', '🚨')
             }
         },
         validateOnChange: false,

@@ -2,7 +2,7 @@ import { Outlet, useMatches } from 'react-router-dom'
 import { styled } from 'incart-fe-common'
 import { Vexile } from '@haechi/flexile'
 
-import { Sidebar } from '@/components'
+import { Modal, Sidebar } from '@/components'
 import { PageConfig } from '@/types'
 
 const BodyWrapper = styled('div', {
@@ -53,6 +53,7 @@ export default () => {
                     top: 'unset',
                 }}
             />
+            <Modal />
             <ContentWrapper gap={6} wide={config?.wide}>
                 <Outlet />
             </ContentWrapper>

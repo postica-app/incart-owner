@@ -7,6 +7,5 @@ export default {
             color: '$grey1',
         },
         borderRadius: '3rem',
-        // clickAnimation: true,
     }),
 }
