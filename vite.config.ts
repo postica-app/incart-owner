@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import UnoCSS from 'unocss/vite'
 
 import react from '@vitejs/plugin-react'
 import mdx from '@mdx-js/rollup'
@@ -12,6 +13,7 @@ export default defineConfig({
             icon: true,
         }),
         react(),
+        UnoCSS(),
         mdx(),
     ],
     resolve: {

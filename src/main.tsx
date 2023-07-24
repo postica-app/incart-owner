@@ -1,18 +1,16 @@
+import 'virtual:uno.css'
+
 import React, { ComponentType, lazy, Suspense } from 'react'
 import 'incart-fe-common/src/fonts/seed.css'
 import {
     createBrowserRouter,
     LoaderFunction,
-    NonIndexRouteObject,
-    Outlet,
-    RouteObject,
     RouterProvider,
 } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import ReactDOM from 'react-dom/client'
 
 import { PageConfig } from './types'
-import { Modal } from './components'
 import Layout from './pages/layout'
 import './App.css'
 
@@ -65,7 +63,7 @@ const main = async () => {
                     .slice(3, -1)
                     .join('/')
                     .replace('$', ':')
-                    .split('/')
+                // .split('/')
 
                 return {
                     path,
@@ -88,45 +86,16 @@ const main = async () => {
         )
     )
 
-    flatPages = flatPages.sort((a, b) => a.path.length - b.path.length)
-
-    const nestedPages: RouteObject = {
-        element: <Layout />,
-        children: [],
-        path: '/',
-    }
-
-    for (const page of flatPages) {
-        const paths = page.path.slice(0, -1)
-        const name = page.path.slice(-1)[0]
-
-        let node = nestedPages
-
-        for (const part of paths) {
-            let child = node.children?.find((child) => child.path == part)
-
-            if (!child) {
-                child = {
-                    children: [],
-                    path: part,
-                }
-                node.children?.push(child)
-            }
-
-            node = child as NonIndexRouteObject
-        }
-
-        node.children?.push({
-            ...page,
-            path: name,
-        })
-    }
-
-    router = createBrowserRouter([nestedPages])
+    router = createBrowserRouter([
+        {
+            element: <Layout />,
+            children: flatPages,
+            path: '/',
+        },
+    ])
 
     ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <React.StrictMode>
-            <Modal />
             <Toaster />
             <RouterProvider router={router} />
         </React.StrictMode>
