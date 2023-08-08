@@ -19,3 +19,12 @@ input {
     font-family: 'SUIT';
     font-size: 4rem;
 }
+
+.item_table {
+    border-spacing: 6rem;
+    margin: -5rem;
+}
+
+.item_table th {
+    text-align: left;
+}

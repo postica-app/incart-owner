@@ -15,9 +15,7 @@ import { useAwait, useModal } from '@/hooks'
 import actions from './actions'
 import styles from './styles'
 import parts from './parts'
-import { Outlet, useNavigate, useSearchParams } from 'react-router-dom'
-import { useSetAtom } from 'jotai'
-import { modalContentAtom } from '@/jotai'
+import { Outlet, useSearchParams } from 'react-router-dom'
 
 let Grid = _Grid
 

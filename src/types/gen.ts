@@ -181,7 +181,3 @@ export interface Database {
         }
     }
 }
-
-export type Table = {
-    [key in keyof Database['public']['Tables']]: Database['public']['Tables'][key]['Row']
-}

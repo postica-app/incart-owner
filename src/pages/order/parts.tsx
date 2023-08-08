@@ -6,23 +6,49 @@ import {
     FSwitch,
     ORDER_STAGE_MAP,
     Header3,
+    getCartItemPrice,
+    CartItemType,
+    Doc,
+    Divider,
 } from 'incart-fe-common'
 
 import { ICON_SIZE_24 } from '@/constants'
 import { Hexile, Vexile } from '@haechi/flexile'
-import { Table, dumpedProduct } from '@/types'
+import { Table } from '@/types'
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { MODAL_KEY } from './page'
 import { ControlGroup } from '@/components'
 import { useFormik } from 'formik'
-import { infer } from 'zod'
+import { signNumber } from '@/functions'
+
+function getOptionInfo(
+    product: Table['order_item']['product'],
+    selectedOptionNames: string[]
+) {
+    const selectedItems = selectedOptionNames.map((name, index) => {
+        const selectedItem = product.options[index].items.find(
+            (item) => item.name === name
+        )
+
+        if (!selectedItem)
+            return {
+                optionName: product.options[index].name,
+                selectedItemName: '알 수 없음',
+                price: 0,
+            }
+
+        return {
+            optionName: product.options[index].name,
+            selectedItemName: selectedItem.name,
+            price: selectedItem.priceDelta,
+        }
+    })
+    return selectedItems
+}
 
 export default {
-    OrderSheetModal({
-        orderSheet,
-        ...props
-    }: {
+    OrderSheetModal(props: {
         orderSheet: Pick<
             Table['order_sheet'],
             | 'rid'
@@ -34,18 +60,26 @@ export default {
             | 'receiver_phone'
             | 'shipping_info'
             | 'created_at'
-        > & {
-            order_item: (Pick<
-                Table['order_item'],
-                'amount' | 'selected_options'
-            > & {
-                product: (typeof dumpedProduct)['_type']
-                selected_options: string[]
-            })[]
-        }
+            | 'order_item'
+        >
         onClose(): void
     }) {
         const [_, setSearchParams] = useSearchParams()
+
+        const orderSheet = {
+            ...props.orderSheet,
+            order_item: props.orderSheet.order_item.map((item) => ({
+                ...item,
+                option_details: getOptionInfo(
+                    item.product,
+                    item.selected_options
+                ),
+                price: getCartItemPrice({
+                    ...(item as unknown as Doc<CartItemType>),
+                    selectedOptions: item.selected_options,
+                }),
+            })),
+        }
 
         useEffect(
             () => () => {
@@ -94,7 +128,7 @@ export default {
                                 />
                             </ControlGroup>
                             <ControlGroup defaultOpened name="상품">
-                                <table>
+                                <table className="item_table">
                                     <thead>
                                         <tr>
                                             <th>
@@ -123,20 +157,79 @@ export default {
                                                     <Text2>{item.amount}</Text2>
                                                 </td>
                                                 <td>
-                                                    <Text2>
-                                                        {item.selected_options?.join?.(
-                                                            ' / '
-                                                        )}
-                                                    </Text2>
+                                                    {item.option_details.map(
+                                                        (option) => (
+                                                            <Text2>
+                                                                [
+                                                                {
+                                                                    option.optionName
+                                                                }
+                                                                ]{' '}
+                                                                {
+                                                                    option.selectedItemName
+                                                                }{' '}
+                                                                {option.price &&
+                                                                    `(${signNumber(
+                                                                        option.price
+                                                                    )}원)`}
+                                                            </Text2>
+                                                        )
+                                                    )}
                                                 </td>
                                                 <td>
                                                     <Text2>
-                                                        TO DO
-                                                        {/* {calcpr} */}
+                                                        {item.price} = (
+                                                        {item.product.price}{' '}
+                                                        {item.option_details
+                                                            .map((option) =>
+                                                                signNumber(
+                                                                    option.price
+                                                                )
+                                                            )
+                                                            .join(' ')}
+                                                        ) * {item.amount}
                                                     </Text2>
                                                 </td>
                                             </tr>
                                         ))}
+                                        <td colSpan={4}>
+                                            <Divider />
+                                        </td>
+                                        <tr>
+                                            <td>
+                                                <Text2>
+                                                    {
+                                                        orderSheet.order_item
+                                                            .length
+                                                    }
+                                                    개 상품종
+                                                </Text2>
+                                            </td>
+                                            <td colSpan={2}>
+                                                <Text2>
+                                                    총{' '}
+                                                    {orderSheet.order_item.reduce(
+                                                        (acc, item) =>
+                                                            acc + item.amount,
+                                                        0
+                                                    )}
+                                                    개 구매
+                                                </Text2>
+                                            </td>
+                                            <td>
+                                                <Text2>
+                                                    {orderSheet.order_item
+                                                        .reduce(
+                                                            (acc, item) =>
+                                                                acc +
+                                                                item.price,
+                                                            0
+                                                        )
+                                                        .toLocaleString()}{' '}
+                                                    원
+                                                </Text2>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </ControlGroup>

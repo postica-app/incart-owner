@@ -73,9 +73,7 @@ export default {
             query = query.like('orderer_email', `%${filter.orderer_email}%`)
 
         const { data: orders, error: orderError } = await query.returns<
-            (Table['order_sheet'] & {
-                order_item: Table['order_item'][]
-            })[]
+            Table['order_sheet'][]
         >()
 
         if (orders === null || orderError) {
