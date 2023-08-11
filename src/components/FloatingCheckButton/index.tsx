@@ -38,7 +38,7 @@ export const FloatingCheckButton: React.FC<{
     ghost: ComponentProps<typeof Button>
     normal: ComponentProps<typeof Button>
 }> = (props) => (
-    <Wrapper gap={3} visible={props.visible}>
+    <Wrapper gap={3} visible={props.visible} className="w-max">
         <Button ghost {...props.ghost} />
         <Button {...props.normal} />
     </Wrapper>

@@ -15,6 +15,7 @@ type OrderItem = Database['public']['Tables']['order_item']['Row'] & {
 type OrderSheet = Database['public']['Tables']['order_sheet']['Row'] & {
     order_item: OrderItem[]
     shipping_info: ShippingInfoType
+    rid: string
 }
 
 export type Table = {
