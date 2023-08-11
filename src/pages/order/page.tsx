@@ -4,18 +4,18 @@ import {
     ORDER_STAGE_MAP,
     ShippingInfoType,
 } from 'incart-fe-common'
+import { Outlet, useSearchParams } from 'react-router-dom'
+import _Grid, { Props } from '@toast-ui/react-grid'
 import GridConfig, { GridOptions } from 'tui-grid'
 import { useEffect, useMemo } from 'react'
 import { Hexile } from '@haechi/flexile'
-import _Grid, { Props } from '@toast-ui/react-grid'
 import 'tui-grid/dist/tui-grid.css'
-import { toast } from '@/functions'
+
 import { useAwait, useModal } from '@/hooks'
+import { toast } from '@/functions'
 
 import actions from './actions'
 import styles from './styles'
-import parts from './parts'
-import { Outlet, useSearchParams } from 'react-router-dom'
 
 let Grid = _Grid
 
@@ -92,12 +92,7 @@ const transformData = (
     })
 }
 
-export const MODAL_KEY = 'detail'
-
 export default () => {
-    const [searchParams, setSearchParams] = useSearchParams()
-    const openModal = useModal()
-
     const [filter, filterView] = actions.useFilter()
     const valuePromise = useMemo(
         () => actions.getOrdersWithFilter(filter),
@@ -112,43 +107,12 @@ export default () => {
         }
     }, [error])
 
-    useEffect(() => {
-        const detailModalRid = searchParams.get(MODAL_KEY)
-        if (!detailModalRid || !rawOrders) return
-
-        const orderSheet = rawOrders.find(
-            (order) => order.rid === detailModalRid
-        )
-
-        if (!orderSheet) {
-            toast('일치하는 주문 내역을 찾을 수 없습니다', '🚨')
-
-            setSearchParams((prev) => {
-                prev.delete('detail')
-                return prev
-            })
-            return
-        }
-
-        const closeModal = openModal(
-            <parts.OrderSheetModal
-                orderSheet={orderSheet}
-                onClose={() => {
-                    closeModal()
-                }}
-            />
-        )
-    }, [searchParams, rawOrders])
-
     const openOrderSheet = ((e) => {
         if (!('rowKey' in e) || typeof e.rowKey !== 'number') return
         const pseudoRid = e.rowKey
         const rid = pseudoRid.toString().replace('.', '-')
 
-        setSearchParams((prev) => ({
-            ...Object.fromEntries(prev.entries()),
-            [MODAL_KEY]: rid,
-        }))
+        open('/order/' + rid, '_blank', 'width=600,height=500')
     }) satisfies Props['onClick']
 
     return (

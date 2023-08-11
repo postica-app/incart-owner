@@ -13,8 +13,16 @@ import ReactDOM from 'react-dom/client'
 import { PageConfig } from './types'
 import Layout from './pages/layout'
 import './App.css'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 export let router: ReturnType<typeof createBrowserRouter>
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            suspense: true,
+        },
+    },
+})
 
 const main = async () => {
     const loaderPaths = Object.entries(
@@ -69,7 +77,9 @@ const main = async () => {
                     path,
                     element: (
                         <Suspense fallback={<></>}>
-                            <Page />
+                            <QueryClientProvider client={queryClient}>
+                                <Page />
+                            </QueryClientProvider>
                         </Suspense>
                     ),
                     loader:

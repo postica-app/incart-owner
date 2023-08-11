@@ -1,3 +1,4 @@
+import { ShippingInfoType } from 'incart-fe-common'
 import { Database } from './gen'
 import { dumpedProduct } from './parse'
 
@@ -13,6 +14,7 @@ type OrderItem = Database['public']['Tables']['order_item']['Row'] & {
 
 type OrderSheet = Database['public']['Tables']['order_sheet']['Row'] & {
     order_item: OrderItem[]
+    shipping_info: ShippingInfoType
 }
 
 export type Table = {

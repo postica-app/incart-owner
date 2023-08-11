@@ -8,7 +8,6 @@ body {
 
 #root {
     height: 100vh;
-    width: 100vw;
 }
 
 * {
@@ -20,11 +19,17 @@ input {
     font-size: 4rem;
 }
 
-.item_table {
+.table {
     border-spacing: 6rem;
     margin: -5rem;
 }
 
-.item_table th {
+.table.tight {
+    border-spacing: 2rem;
+    margin: -2rem;
+}
+
+.table th {
+    font-weight: unset;
     text-align: left;
 }

@@ -16,9 +16,7 @@ import {
 } from 'incart-fe-common'
 import { Table } from '@/types'
 
-export const OrderFilter = z.object({
-    range_start: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-    range_end: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+const COMMON_FIELDS = {
     product_id: z.string().uuid().optional(),
     order_stage: z
         .enum([
@@ -28,22 +26,39 @@ export const OrderFilter = z.object({
             OrderStage.canceled,
         ])
         .optional(),
-    rid: z.string().uuid().optional(),
     orderer_name: z.string().optional(),
     orderer_phone: z.string().optional(),
     orderer_email: z.string().optional(),
     receiver_name: z.string().optional(),
     receiver_phone: z.string().optional(),
     shipping_info: z.string().optional(),
-})
+}
+
+export const OrderFilter = z.union([
+    z.object({
+        range_start: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+        range_end: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+        rid: z.string().optional(),
+        ...COMMON_FIELDS,
+    }),
+    z.object({
+        range_start: z
+            .string()
+            .regex(/^\d{4}-\d{2}-\d{2}$/)
+            .optional(),
+        range_end: z
+            .string()
+            .regex(/^\d{4}-\d{2}-\d{2}$/)
+            .optional(),
+        rid: z.string(),
+        ...COMMON_FIELDS,
+    }),
+])
 
 export default {
     async getOrdersWithFilter(filter: z.infer<typeof OrderFilter>) {
-        console.log(filter)
-        let query = supabase
-            .from('order_sheet')
-            .select(
-                `
+        let query = supabase.from('order_sheet').select(
+            `
                 rid,
                 id,
                 orderer_name,
@@ -54,10 +69,13 @@ export default {
                 receiver_name,
                 receiver_phone,
                 created_at,
-                order_item(amount, selected_options, product)`
-            )
-            .gte('created_at', filter.range_start)
-            .lte('created_at', filter.range_end)
+                items:order_item(amount, selected_options, product)`
+        )
+
+        if (filter.range_start)
+            query = query.gte('created_at', filter.range_start)
+
+        if (filter.range_end) query = query.lte('created_at', filter.range_end)
 
         if (filter.order_stage) query = query.eq('stage', filter.order_stage)
 
@@ -72,8 +90,13 @@ export default {
         if (filter.orderer_email)
             query = query.like('orderer_email', `%${filter.orderer_email}%`)
 
+        if (filter.product_id)
+            query = query.contains('order_item.product_id', filter.product_id)
+
         const { data: orders, error: orderError } = await query.returns<
-            Table['order_sheet'][]
+            (Table['order_sheet'] & {
+                items: Table['order_item'][]
+            })[]
         >()
 
         if (orders === null || orderError) {
@@ -83,61 +106,7 @@ export default {
             )
         }
 
-        const orderIds = orders.map((order) => order.id)
-
-        const productIdFilter = filter.product_id
-
-        let orderItemsQuery = supabase
-            .from('order_item')
-            .select('product_id, order_id, amount, selected_options, product')
-            .in('order_id', orderIds)
-
-        if (productIdFilter) {
-            orderItemsQuery = orderItemsQuery.eq('product_id', productIdFilter)
-        }
-
-        const { data: orderItems, error: orderItemsError } =
-            await orderItemsQuery
-
-        if (orderItems === null || orderItemsError) {
-            throw new Error(
-                orderItemsError?.message ||
-                    'Error while fetching order products'
-            )
-        }
-
-        type OrderItemType = (typeof orderItems)[number] & {
-            product: ProductType
-            selected_options: string[]
-        }
-
-        const orderItemsMap = orderItems.reduce((acc, item) => {
-            if (!acc[item.order_id]) {
-                acc[item.order_id] = []
-            }
-
-            acc[item.order_id].push(item as OrderItemType)
-
-            return acc
-        }, {} as Record<string, OrderItemType[]>)
-
-        if (!productIdFilter) {
-            return orders.map((order) => ({
-                ...order,
-                items: orderItemsMap[order.id] || [],
-            }))
-        }
-
-        const filteredOrders = orders.filter((order) =>
-            orderItemsMap[order.id]?.some(
-                (orderProduct) => orderProduct.product_id === productIdFilter
-            )
-        )
-
-        return filteredOrders.map((order) => ({
-            ...order,
-            items: orderItemsMap[order.id] || [],
-        }))
+        return orders
     },
     useFilter() {
         const [_, setSearchParams] = useSearchParams()
