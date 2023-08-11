@@ -44,22 +44,27 @@ const columns: GridOptions['columns'] = [
             // 2. 사용자에겐 `-`로 보이게 하기 위해 custom formatter를 적용해서 다시 바꿔줍니다
             return (props.value as string)!.replace('.', '-')
         },
+        width: 80,
     },
     {
         name: 'orderer_name',
         header: '주문자',
+        width: 100,
     },
     {
         name: 'products',
         header: '상품',
+        width: 300,
     },
     {
         name: 'shipping_info',
         header: '배송 정보',
+        width: 300,
     },
     {
         name: 'stage',
         header: '상태',
+        width: 80,
     },
 ]
 
@@ -73,8 +78,9 @@ const transformData = (
             rid: order.rid!.replace('-', '.'),
             orderer_name: order.orderer_name,
             shipping_info: shippingInfo.address
-                ? `(${shippingInfo.method}) ` +
+                ? `[${shippingInfo.method}] ` +
                   shippingInfo.address.roadname +
+                  ' / ' +
                   shippingInfo.address.detail
                 : shippingInfo.message || shippingInfo.method,
             stage: ORDER_STAGE_MAP[order.stage as OrderStage],
@@ -82,9 +88,9 @@ const transformData = (
                 .map(
                     (item) =>
                         item.product?.name +
-                        ' ' +
+                        ' (' +
                         item.selected_options?.join(' ') +
-                        'x' +
+                        ') x ' +
                         item.amount
                 )
                 .join(', '),

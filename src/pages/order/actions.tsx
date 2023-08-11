@@ -24,6 +24,7 @@ const COMMON_FIELDS = {
             OrderStage.paid,
             OrderStage.departed,
             OrderStage.canceled,
+            '*',
         ])
         .optional(),
     orderer_name: z.string().optional(),
@@ -59,17 +60,18 @@ export default {
     async getOrdersWithFilter(filter: z.infer<typeof OrderFilter>) {
         let query = supabase.from('order_sheet').select(
             `
-                rid,
-                id,
-                orderer_name,
-                shipping_info,
-                stage,
-                orderer_phone,
-                orderer_email,
-                receiver_name,
-                receiver_phone,
-                created_at,
-                items:order_item(amount, selected_options, product)`
+            rid,
+            id,
+            orderer_name,
+            shipping_info,
+            stage,
+            orderer_phone,
+            orderer_email,
+            receiver_name,
+            receiver_phone,
+            created_at,
+            items:order_item(amount, selected_options, product)
+            `
         )
 
         if (filter.range_start)
@@ -77,9 +79,10 @@ export default {
 
         if (filter.range_end) query = query.lte('created_at', filter.range_end)
 
-        if (filter.order_stage) query = query.eq('stage', filter.order_stage)
+        if (filter.order_stage && filter.order_stage !== '*')
+            query = query.eq('stage', filter.order_stage)
 
-        if (filter.rid) query = query.textSearch('rid', filter.rid)
+        if (filter.rid) query = query.eq('rid', filter.rid)
 
         if (filter.orderer_name)
             query = query.like('orderer_name', `%${filter.orderer_name}%`)
@@ -149,10 +152,7 @@ export default {
 
         const view = (
             <FormikContext.Provider value={formik}>
-                <form
-                    onSubmit={formik.handleSubmit}
-                    style={{ width: '103rem' }}
-                >
+                <form onSubmit={formik.handleSubmit} style={{ width: '72rem' }}>
                     <Vexile gap={5}>
                         <Header2>상세 검색</Header2>
                         <Hexile gap={3}>
@@ -166,12 +166,13 @@ export default {
                         <FormField name="주문 상태">
                             <FSwitch
                                 name="order_stage"
-                                items={Object.entries(ORDER_STAGE_MAP).map(
-                                    ([key, value]) => ({
-                                        key,
-                                        name: value,
-                                    })
-                                )}
+                                items={[
+                                    ['*', '전체'],
+                                    ...Object.entries(ORDER_STAGE_MAP),
+                                ].map(([key, value]) => ({
+                                    key,
+                                    name: value,
+                                }))}
                             />
                         </FormField>
                         <FormField name="주문자 이메일">
