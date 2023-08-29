@@ -11,7 +11,7 @@ export default {
     async copyEmbed(id: string) {
         // https://embed.incart.me/product/b928a2e1-bde1-4563-9c5e-9feb653317fd
 
-        const embedUrl = import.meta.env.VITE_EMBED_URL + 'product/' + id
+        const embedUrl = import.meta.env.VITE_EMBED_URL + id
         await navigator.clipboard.writeText(embedUrl)
 
         toast(
