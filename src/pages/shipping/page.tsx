@@ -44,7 +44,7 @@ export default () => {
             enableVisit: !!visitPolicy,
             parcelPrice: parcelPolicy?.price || 3000,
             roughParcelPrice: roughParcelPolicy?.price || 3000,
-            visitNotice: visitPolicy?.info || '',
+            visitNotice: visitPolicy?.info || '수령지 위치',
         },
         validate(values) {
             const errors: Partial<Record<keyof typeof values, string>> = {}
@@ -62,8 +62,17 @@ export default () => {
                     errors.visitNotice = '방문 수령 안내를 입력해주세요'
             }
 
+            if (!values.enableParcelDelivery && !values.enableVisit) {
+                errors.enableParcelDelivery =
+                    '택배 또는 방문 수령 중 하나는 사용해야 합니다'
+
+                errors.enableVisit =
+                    '택배 또는 방문 수령 중 하나는 사용해야 합니다'
+            }
+
             return errors
         },
+        validateOnChange: true,
         async onSubmit(values) {
             const newMethods: ShippingMethodType[] = [
                 ...(values.enableParcelDelivery
@@ -145,6 +154,11 @@ export default () => {
                             <FCheckbox name="enableParcelDelivery">
                                 <Text1>사용</Text1>
                             </FCheckbox>
+                            {formik.errors.enableParcelDelivery && (
+                                <Text1 blue>
+                                    {formik.errors.enableParcelDelivery}
+                                </Text1>
+                            )}
                             <FormField name="배송비 (원)" required>
                                 <FInput
                                     name="parcelPrice"
@@ -170,6 +184,9 @@ export default () => {
                             <FCheckbox name="enableVisit">
                                 <Text1>사용</Text1>
                             </FCheckbox>
+                            {formik.errors.enableVisit && (
+                                <Text1 blue>{formik.errors.enableVisit}</Text1>
+                            )}
                             <FormField name="안내 메시지" required>
                                 <FInput
                                     name="visitNotice"
