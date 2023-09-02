@@ -15,6 +15,7 @@ import {
     FInput,
 } from 'incart-fe-common'
 import { Table } from '@/types'
+import { Console } from 'console'
 
 const COMMON_FIELDS = {
     product_id: z.string().uuid().optional(),
@@ -74,10 +75,18 @@ export default {
             `
         )
 
-        if (filter.range_start)
-            query = query.gte('created_at', filter.range_start)
+        if (filter.range_start) {
+            const range_start = new Date(
+                filter.range_start + `T00:00:00`
+            ).toISOString()
+            query = query.gte('created_at', range_start)
+        }
 
-        if (filter.range_end) query = query.lte('created_at', filter.range_end)
+        if (filter.range_end) {
+            let range_end = new Date(filter.range_end + `T00:00:00`)
+            range_end.setDate(range_end.getDate() + 1)
+            query = query.lte('created_at', range_end.toISOString())
+        }
 
         if (filter.order_stage && filter.order_stage !== '*')
             query = query.eq('stage', filter.order_stage)
@@ -95,6 +104,8 @@ export default {
 
         if (filter.product_id)
             query = query.contains('order_item.product_id', filter.product_id)
+
+        query = query.order('created_at', { ascending: false })
 
         const { data: orders, error: orderError } = await query.returns<
             (Table['order_sheet'] & {
@@ -120,7 +131,7 @@ export default {
             )
             const requiredField = {
                 range_start: new Date(
-                    new Date().getTime() - 70 * 24 * 60 * 60 * 1000
+                    new Date().getTime() - 14 * 24 * 60 * 60 * 1000
                 )
                     .toISOString()
                     .substring(0, 10),
