@@ -144,7 +144,7 @@ export default () => {
                                     keyColumnName="rid"
                                 />
                             ) : (
-                                <>아니</>
+                                <></>
                             )}
                         </>
                     )}

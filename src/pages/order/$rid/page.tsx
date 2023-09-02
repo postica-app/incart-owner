@@ -32,7 +32,6 @@ export default () => {
     const formik = useFormik({
         initialValues: orderSheet,
         async onSubmit(values, formikHelpers) {
-            alert('네?')
             const result = await actions.updateStage(
                 orderSheet.rid,
                 values.stage
@@ -146,16 +145,9 @@ export default () => {
                                             </td>
                                             <td>
                                                 <Text2>
-                                                    {item.price} = (
-                                                    {item.product.price}{' '}
-                                                    {item.option_details
-                                                        .map((option) =>
-                                                            signNumber(
-                                                                option.price
-                                                            )
-                                                        )
-                                                        .join(' ')}
-                                                    ) * {item.amount}
+                                                    {actions.createPriceCalcString(
+                                                        item
+                                                    )}
                                                 </Text2>
                                             </td>
                                         </tr>
