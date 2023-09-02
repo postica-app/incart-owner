@@ -50,12 +50,18 @@ export default () => {
     })
 
     return (
-        <Vexile gap={6} padding={4}>
-            <Hexile y="center" x="space">
-                <Hexile gap={3} y="center">
+        <Vexile gap={6} padding={6}>
+            <Hexile y="bottom" x="space">
+                <Hexile gap={3} y="bottom">
                     <Header1>주문서</Header1>
                     <Text2>주문번호: {orderSheet.rid}</Text2>
                 </Hexile>
+                {orderSheet.created_at && (
+                    <Text2 grey5>
+                        {new Date(orderSheet.created_at).toLocaleString()}에
+                        주문함
+                    </Text2>
+                )}
             </Hexile>
             <FormikContext.Provider value={formik}>
                 <form onSubmit={formik.handleSubmit}>
