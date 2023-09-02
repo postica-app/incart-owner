@@ -66,6 +66,14 @@ const columns: GridOptions['columns'] = [
         header: '상태',
         width: 80,
     },
+    {
+        name: 'created_at',
+        header: '주문일자',
+        formatter(props) {
+            return new Date(props.value as string).toLocaleDateString()
+        },
+        width: 100,
+    },
 ]
 
 const transformData = (
@@ -94,6 +102,7 @@ const transformData = (
                         item.amount
                 )
                 .join(', '),
+            created_at: order.created_at,
         }
     })
 }
