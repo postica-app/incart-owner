@@ -17,6 +17,7 @@ const ContentWrapper = styled(Vexile, {
     margin: '0rem auto',
     maxWidth: '180rem',
     position: 'absolute',
+    paddingBottom: '10rem',
     left: 0,
     right: 0,
     '@tablet': {
@@ -31,6 +32,7 @@ const ContentWrapper = styled(Vexile, {
                 position: 'unset',
                 maxWidth: 'unset',
                 margin: 'unset',
+                paddingBottom: '0',
                 flex: 1,
             },
         },
@@ -46,13 +48,7 @@ export default () => {
         <Outlet />
     ) : (
         <BodyWrapper>
-            <Sidebar
-                css={{
-                    position: 'initial',
-                    left: 'unset',
-                    top: 'unset',
-                }}
-            />
+            <Sidebar />
             <Modal />
             <ContentWrapper gap={6} wide={config?.wide}>
                 <Outlet />

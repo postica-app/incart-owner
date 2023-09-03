@@ -38,7 +38,7 @@ export const Sidebar: React.FC<ComponentProps<(typeof styles)['Wrapper']>> = (
     props
 ) => {
     return (
-        <styles.Wrapper gap={12} {...props} filly>
+        <styles.Wrapper gap={12} {...props}>
             <Link to="/">
                 <Logo
                     style={{ height: '7rem', width: '28rem' }}
