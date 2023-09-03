@@ -1,15 +1,38 @@
 import { Button, Header1, ProductCard, ProductType } from 'incart-fe-common'
 import { ReactComponent as Code } from 'incart-fe-common/src/icons/Code.svg'
-import { useLoaderData } from 'react-router-dom'
+import { ReactComponent as Trash } from 'incart-fe-common/src/icons/Trash.svg'
+import { useLoaderData, useNavigate } from 'react-router-dom'
 
 import { Breadcrumb, ControlGroup } from '@/components'
 import { Doc } from '@/types/utils'
+import { useModal } from '@/hooks'
 
-import { EditProductInfo } from './parts'
-import actions from '../actions'
+import productListActions from '../actions'
+import actions from './actions'
+import Parts from './parts'
 
 export default () => {
     const product = useLoaderData() as Doc<ProductType>
+    const showModal = useModal()
+    const goto = useNavigate()
+
+    const deleteProduct = (async (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+
+        const result = await actions.deleteProduct(product, showModal)
+
+        if (result.status === 'success') {
+            goto('..')
+            return
+        }
+    }) satisfies React.MouseEventHandler<HTMLButtonElement>
+
+    const copyEmbed = ((e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        productListActions.copyEmbed(product.id)
+    }) satisfies React.MouseEventHandler<HTMLButtonElement>
 
     return (
         <>
@@ -19,11 +42,7 @@ export default () => {
             <Button
                 icon={(props) => <Code {...props} />}
                 ghost
-                onClick={(e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    actions.copyEmbed(product.id)
-                }}
+                onClick={copyEmbed}
             >
                 임베드 복사하기
             </Button>
@@ -31,8 +50,16 @@ export default () => {
                 defaultOpened
                 name="상품 정보 수정 (이름, 가격, 상세설명, 옵션)"
             >
-                <EditProductInfo product={product} />
+                <Parts.EditProductInfo product={product} />
             </ControlGroup>
+            <Button
+                icon={(props) => <Trash {...props} />}
+                ghost
+                danger
+                onClick={deleteProduct}
+            >
+                상품 삭제하기
+            </Button>
         </>
     )
 }

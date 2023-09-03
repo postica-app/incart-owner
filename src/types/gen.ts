@@ -132,6 +132,7 @@ export interface Database {
       product: {
         Row: {
           created_at: string | null
+          deleted_at: string | null
           id: string
           info: string | null
           name: string
@@ -141,6 +142,7 @@ export interface Database {
         }
         Insert: {
           created_at?: string | null
+          deleted_at?: string | null
           id?: string
           info?: string | null
           name: string
@@ -150,6 +152,7 @@ export interface Database {
         }
         Update: {
           created_at?: string | null
+          deleted_at?: string | null
           id?: string
           info?: string | null
           name?: string

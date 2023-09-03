@@ -2,6 +2,7 @@ import { ReactComponent as Code } from 'incart-fe-common/src/icons/Code.svg'
 import { ReactComponent as Cart } from 'incart-fe-common/src/icons/Cart.svg'
 import { ReactComponent as Link } from 'incart-fe-common/src/icons/Link.svg'
 import emptyHandImage from 'incart-fe-common/src/images/empty-hand.png'
+
 import { Button, Header2, Text1, Text2 } from 'incart-fe-common'
 import { Hexile, Vexile } from '@haechi/flexile'
 
