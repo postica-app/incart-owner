@@ -176,6 +176,7 @@ export default {
                         </Hexile>
                         <FormField name="주문 상태">
                             <FSwitch
+                                verticalText
                                 name="order_stage"
                                 items={[
                                     ['*', '전체'],

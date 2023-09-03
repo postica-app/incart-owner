@@ -7,7 +7,8 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
-        "pull-scheme": "npx supabase gen types typescript --project-id 'daxrvmzwgfifuornneda' --schema public > src/types/gen.ts"
+        "pull-scheme": "npx supabase gen types typescript --project-id 'daxrvmzwgfifuornneda' --schema public > src/types/gen.ts",
+        "update-common-package": "pnpm remove incart-fe-common && pnpm add github:postica-app/incart-fe-common"
     },
     "dependencies": {
         "@haechi/flexile": "^1.4.7",
